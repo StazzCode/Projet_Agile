@@ -1,5 +1,7 @@
+package main;
 public class Carte{
 
+    public static Character a;
     public static Case[][] carte = new Case[10][20];
 
     public static void initCarte(){
@@ -26,8 +28,45 @@ public class Carte{
     }
 
     public static void main(String[] args) {
+        //a.setX(5);
+        //a.setY(5);
+        //a.setC('P');
         initCarte();
+        //carte[5][5]=
         displayCarte();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
     }
 
 }
