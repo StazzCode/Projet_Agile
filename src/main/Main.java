@@ -15,18 +15,18 @@ public class Main {
         System.out.println(CLEARSCREEN);
         try{
             FileReader file = new FileReader("./res/mainMenuText.txt");
-            Scanner sc = new Scanner(file);
-            while(sc.hasNextLine()){
-                result = result + sc.nextLine()+"\n";
+            Scanner sc1 = new Scanner(file);
+            while(sc1.hasNextLine()){
+                result = result + sc1.nextLine()+"\n";
             }
-            sc.close();
+            sc1.close();
         }catch(FileNotFoundException e){
             result = result + "ASCII introuvable";
         }
         System.out.println(result);
         Scanner sc2 = new Scanner(System.in);
         int choix = sc2.nextInt();
-        sc2.close();
+        //sc2.close();
         return choix;
     }
 
@@ -58,6 +58,7 @@ public class Main {
         boolean transi = true;
         while (transi) {
             chaine = sc.nextLine();
+            System.out.println(CLEARSCREEN);
             if (chaine.equals(c.getZ())){
                 try{
                     c.moveUp();
@@ -99,6 +100,7 @@ public class Main {
             }
             carte.displayCarte();
         }
+        sc.close();
         
 
         /*
