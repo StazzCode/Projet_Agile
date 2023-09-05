@@ -43,19 +43,19 @@ public class Character extends Entite{
     }
 
     public void moveUp(){
-        this.x = getX() - 1;
+        this.setY(this.getY()-1);
     }
 
     public void moveDown(){
-        this.x = getX() + 1;
+        this.setY(this.getY()+1);
     }
 
     public void moveLeft(){
-        this.y = getY() - 1;
+        this.setX(this.getX()-1);
     }
 
     public void moveRight(){
-        this.y = getY() + 1;
+        this.setX(this.getX()+1);
     }
 
     public ArrayList<Aliments> getInventaire() {
