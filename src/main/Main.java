@@ -1,11 +1,39 @@
 package main;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
+
+    public final static String CLEARSCREEN = "\033[H\033[2J";
+    //--------------AFFICHAGE MENU TEXT----------------
+
+    public static int afficherMenuPrincipal(){ //renvoi le choix du joueur (1 = jouer 2 = classement 3 = quitter)
+        String result = "";
+        System.out.println(CLEARSCREEN);
+        try{
+            FileReader file = new FileReader("./res/mainMenuText.txt");
+            Scanner sc = new Scanner(file);
+            while(sc.hasNextLine()){
+                result = result + sc.nextLine()+"\n";
+            }
+            sc.close();
+        }catch(FileNotFoundException e){
+            result = result + "ASCII introuvable";
+        }
+        System.out.println(result);
+        Scanner sc2 = new Scanner(System.in);
+        int choix = sc2.nextInt();
+        sc2.close();
+        return choix;
+    }
+
+    //-------------FIN AFFICHAGE MENU TEXT---------------
     
     public static void main(String[] args){
+        System.out.println(afficherMenuPrincipal());
         int x = 9;
         int y = 4;
         int y2 = y + 1;
