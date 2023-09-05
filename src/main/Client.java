@@ -7,9 +7,9 @@ public class Client extends Entite {
     private int x;
     private int y;
     private char c= 'C';
-    private ArrayList<String> inventaire;
+    private ArrayList<Aliments> inventaire;
 
-    public Client(int x, int y, ArrayList<String> inventaire){
+    public Client(int x, int y, ArrayList<Aliments> inventaire){
         super(x,y,inventaire);
     }
 
