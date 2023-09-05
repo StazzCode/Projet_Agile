@@ -1,37 +1,20 @@
 package main;
 
-public class Character {
+import java.util.ArrayList;
 
-    private int x = 5;
-    private int y = 5;
+public class Character extends Entite{
+ 
+    private int x;
+    private int y;
     private char c= 'P';
-    private String[] inventaire;
+    private ArrayList<String> inventaire;
 
-    public Character(int x, int y, String[] inventaire){
-        this.x = x;
-        this.y = y;
-        this.inventaire = inventaire;
-    }
-    
-    public int getX() {
-        return x;
+    public Character(int x, int y, ArrayList<String> inventaire){
+        super(x, y, inventaire);
     }
 
-    public int getY() {
-        return y;
-    }
-    
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    public void setC(char c) {
-        this.c = c;
+    public Character(int x, int y){
+        this(x, y, null);
     }
 
     public char getC() {
@@ -52,5 +35,9 @@ public class Character {
 
     public void moveRight(){
         this.y = getY() + 1;
+    }
+
+    public ArrayList<String> getInventaire() {
+        return inventaire;
     }
 }

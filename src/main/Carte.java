@@ -1,10 +1,33 @@
 package main;
+
+import java.util.ArrayList;
+
 public class Carte{
 
-    public static Character a;
-    public static Case[][] carte = new Case[10][20];
+    private Character a;
+    private ArrayList<Client> clientsList = new ArrayList<Client>();
 
-    public static void initCarte(){
+    private Case[][] carte = new Case[10][20];
+
+    private Entite[][] grid = new Entite[10][20];
+
+    public Carte(Character a){
+        this.a = a;
+    }
+
+    public Character getA() {
+        return a;
+    }
+
+    public Case[][] getCarte() {
+        return carte;
+    }
+
+    public Entite[][] getGrid() {
+        return grid;
+    }
+
+    public void initCarte(){
         for(int i = 0;i < carte.length;i ++){
             for(int j = 0; j < carte[i].length;j++){
                 if(j == 0||j == 19){
@@ -18,55 +41,23 @@ public class Carte{
         }
     }
 
-    public static void displayCarte(){
+    public void displayCarte(){
         for(int i = 0;i < carte.length;i ++){
             for(int j = 0; j < carte[i].length;j++){
-                System.out.print(carte[i][j].getName());
+                if (grid[i][j] == a){
+                    System.out.print(a.getC());
+                }else if (clientsList.contains(grid[i][j])){
+                    System.out.print(grid[i][j].getC());
+                }else{
+                    System.out.print(carte[i][j].getName());
+                }
+                
             }
             System.out.println();
         }
     }
 
-    public static void main(String[] args) {
-        //a.setX(5);
-        //a.setY(5);
-        //a.setC('P');
-        initCarte();
-        //carte[5][5]=
-        displayCarte();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
+    public ArrayList<Client> getClientsList() {
+        return clientsList;
     }
-
 }
