@@ -31,21 +31,41 @@ public class Main {
         while (transi) {
             chaine = sc.nextLine();
             if (chaine.equals(c.getZ())){
-                c.moveUp();
-                carte.getGrid()[c.getY() + 1][c.getX()] = new Empty(c.getY() + 1, c.getX()) ;
-                carte.getGrid()[c.getY()][c.getX()] = c ;
+                try{
+                    c.moveUp();
+                    carte.getGrid()[c.getY() + 1][c.getX()] = new Empty(c.getY() + 1, c.getX()) ;
+                    carte.getGrid()[c.getY()][c.getX()] = c ;
+                }catch(InvalidDeplacement e){
+                    System.out.println("Déplacement vers le haut invalide");
+                }
             }else if (chaine.equals(c.getS())){
-                c.moveDown();
-                carte.getGrid()[c.getY() - 1][c.getX()] = new Empty(c.getY() - 1, c.getX()) ;
-                carte.getGrid()[c.getY()][c.getX()] = c ;
+                try {
+                    c.moveDown();
+                    carte.getGrid()[c.getY() - 1][c.getX()] = new Empty(c.getY() - 1, c.getX()) ;
+                    carte.getGrid()[c.getY()][c.getX()] = c ;
+                } catch (InvalidDeplacement e) {
+                    // TODO: handle exception
+                    System.out.println("Déplacement vers le bas invalide");
+                }
             }else if (chaine.equals(c.getQ())){
-                c.moveLeft();
-                carte.getGrid()[c.getY()][c.getX() + 1] = new Empty(c.getY(), c.getX() + 1) ;
-                carte.getGrid()[c.getY()][c.getX()] = c ;
+                try {
+                    c.moveLeft();
+                    carte.getGrid()[c.getY()][c.getX() + 1] = new Empty(c.getY(), c.getX() + 1) ;
+                    carte.getGrid()[c.getY()][c.getX()] = c ;
+                } catch (InvalidDeplacement e) {
+                    // TODO: handle exception
+                    System.out.println("Déplacement vers la gauche invalide");
+                }
             }else if (chaine.equals(c.getD())){
-                c.moveRight();
-                carte.getGrid()[c.getY()][c.getX() - 1] = new Empty(c.getY(), c.getX() - 1) ;
-                carte.getGrid()[c.getY()][c.getX()] = c ;
+                try {
+                    c.moveRight();
+                    carte.getGrid()[c.getY()][c.getX() - 1] = new Empty(c.getY(), c.getX() - 1) ;
+                    carte.getGrid()[c.getY()][c.getX()] = c ;
+                    
+                } catch (InvalidDeplacement e) {
+                    // TODO: handle exception
+                    System.out.println("Déplacement vers la droite invalide");
+                }
             }else{
                 transi = false;
             }

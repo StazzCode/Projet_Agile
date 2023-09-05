@@ -42,19 +42,23 @@ public class Character extends Entite{
         return c;
     }
 
-    public void moveUp(){
+    public void moveUp() throws InvalidDeplacement{
+        if(this.getY()-1<=0) throw new InvalidDeplacement("Déplacement vers le haut invalide");
         this.setY(this.getY()-1);
     }
 
-    public void moveDown(){
+    public void moveDown()throws InvalidDeplacement{
+        if(this.getY()+1>=9) throw new InvalidDeplacement("Déplacement vers le bas invalide");
         this.setY(this.getY()+1);
     }
 
-    public void moveLeft(){
+    public void moveLeft()throws InvalidDeplacement{
+        if(this.getX()-1<=0) throw new InvalidDeplacement("Déplacement vers la gauche invalide");
         this.setX(this.getX()-1);
     }
 
-    public void moveRight(){
+    public void moveRight()throws InvalidDeplacement{
+        if(this.getX()+1>=19) throw new InvalidDeplacement("Déplacement vers la droite invalide");
         this.setX(this.getX()+1);
     }
 
