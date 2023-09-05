@@ -38,12 +38,10 @@ public class Main {
         int y = 4;
         int y2 = y + 1;
 
-        Pizza p = new Pizza("Quatre Fromages");
-
         ArrayList<Aliments> inventaire = new ArrayList<Aliments>();
-        inventaire.add(p);
+        inventaire.add(Aliments.BOEAUF);
 
-        Character c = new Character(x, y,inventaire);
+        Character c = new Character(x, y, inventaire);
         Client client = new Client(x,y2);
         Carte carte = new Carte(c);
 
