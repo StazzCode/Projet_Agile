@@ -1,6 +1,6 @@
 package main;
 
-public enum Aliments {
+public enum Aliments { 
 
     CHORIZZO("Chorizo", 4, "meet"),
     MOZZARELLA("mozzarella", 2, "cheese"),
