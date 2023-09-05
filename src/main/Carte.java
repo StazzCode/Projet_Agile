@@ -31,9 +31,9 @@ public class Carte{
         for(int i = 0;i < carte.length;i ++){
             for(int j = 0; j < carte[i].length;j++){
                 if(j == 0||j == 19){
-                    carte[i][j] = new Meuble(false, "X");
+                    carte[i][j] = new Meuble(false, "|");
                 }else if(i == 0 || i == 9){
-                    carte[i][j] = new Meuble(false, "Y");
+                    carte[i][j] = new Meuble(false, "-");
                 }else{
                     carte[i][j] = new Meuble(true, " ");
                 }

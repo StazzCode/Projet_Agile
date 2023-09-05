@@ -7,9 +7,9 @@ public class Entite {
     private int x;
     private int y;
     private char c;
-    private ArrayList<String> inventaire;
+    private ArrayList<Aliments> inventaire;
 
-    public Entite(int x, int y, ArrayList<String> inventaire) {
+    public Entite(int x, int y, ArrayList<Aliments> inventaire) {
         this.x = x;
         this.y = y;
         //this.c = c;
