@@ -9,12 +9,8 @@ public class Client extends Entite {
     private char c= 'C';
     private ArrayList<Aliments> inventaire;
 
-    public Client(int x, int y, ArrayList<Aliments> inventaire){
-        super(x,y,inventaire);
-    }
-
     public Client(int x, int y){
-        this(x, y, null);
+        super(x,y);
     }
 
     public char getC() {

@@ -42,6 +42,9 @@ public class Main {
     //-------------FIN AFFICHAGE MENU TEXT---------------
     
     public static void main(String[] args){
+        
+        Scanner sc = new Scanner(System.in);
+
         int choice = 0;
         while(choice == 0){
             choice = afficherMenuPrincipal() ;
@@ -51,10 +54,8 @@ public class Main {
         int y = 4;
         int y2 = y + 1;
 
-        ArrayList<Aliments> inventaire = new ArrayList<Aliments>();
-        inventaire.add(Aliments.BOEAUF);
-
-        Character c = new Character(x, y, inventaire);
+        Character c = new Character(x, y);
+        
         Client client = new Client(x,y2);
         Carte carte = new Carte(c);
 
@@ -64,9 +65,7 @@ public class Main {
         carte.getGrid()[c.getY()][c.getX()] = c;
         carte.getGrid()[client.getY()][client.getX()] = client;
         carte.displayCarte();
-
         
-        Scanner sc = new Scanner(System.in);
         String chaine;
         boolean transi = true;
         while (transi) {
@@ -112,30 +111,49 @@ public class Main {
                 transi = false;
             }
             carte.displayCarte();
-        }
-        
-        
 
-        /*
-        System.out.println();
-        System.out.println("Donner une pizza : " + inventaire.get(0).getName() + " | Appuyez sur Entrer");
+            Pizza pizz1 = Pizza.SPICY_TEXAS;
+            Pizza pizz2 = Pizza.SPICY_TEXAS;
 
-        Scanner sc = new Scanner(System.in);
-        String chaine;
-        boolean action = false;
-        while (!action) {
-            chaine = sc.nextLine();
-            if (chaine.equals(""));
-            action = true;
-        }
+            c.addToInventaire(Aliments.BOEAUF);
+            c.addToInventaire(Aliments.MOZZARELLA);
+            c.addToInventaire(Aliments.CHORIZZO);
+            c.addToInventaire(Aliments.BOEAUF);
 
-        System.out.println();
-        System.out.println("Bravo votre client est satisfait !");
-        */
-        sc.close();
-        }else{
-            System.out.println("Au revoir !");
+            System.out.println();
+            System.out.println("Ton inventaire :" + c.inventaireToString() + "");
+            System.out.println("Donner une pizza : " + pizz1.getName() + " | Appuyez sur Entrer");
+
+            String mChaine;
+            boolean action = false;
+            while (!action) {
+                mChaine = sc.nextLine();
+                if(pizz1.verifPizza(c.getInventaire())){ 
+                    System.out.println("Bravo votre client est satisfait !");
+                    action = true;
+                }else{
+                    System.out.println("Vous n'avez pas les ingredients necessaire");
+                }
+            }
+
+            System.out.println();
+            System.out.println("Ton inventaire :" + c.inventaireToString() + "");
+            System.out.println("Donner une pizza : " + pizz2.getName() + " | Appuyez sur Entrer");
+
+            
+            action = false;
+            while (!action) {
+                mChaine = sc.nextLine();
+                if(pizz2.verifPizza(c.getInventaire())){
+                    action = true;
+                }else{
+                    System.out.println("Vous n'avez pas les ingredients necessaire");
+                }
+            }
+            System.out.println();
+            } 
         }
-        
-    } 
+    }
 }
+    
+

@@ -14,8 +14,8 @@ public class Character extends Entite{
     private char c= 'P';
     private ArrayList<Aliments> inventaire;
 
-    public Character(int x, int y, ArrayList<Aliments> inventaire){
-        super(x, y, inventaire);
+    public Character(int x, int y){
+        super(x, y);
     }
 
     public String getZ() {
@@ -32,10 +32,6 @@ public class Character extends Entite{
 
     public String getD() {
         return D;
-    }
-
-    public Character(int x, int y){
-        this(x, y, null);
     }
 
     public char getC() {
@@ -62,7 +58,28 @@ public class Character extends Entite{
         this.setX(this.getX()+1);
     }
 
-    public ArrayList<Aliments> getInventaire() {
-        return inventaire;
+    public String inventaireToString() {
+        String res = "";
+        ArrayList<Aliments> alim = new ArrayList<Aliments>();
+        for(int i = 0; i < getInventaire().size(); i++){
+            if(!alim.contains(getInventaire().get(i))){
+                res += getInventaire().get(i).getName();
+                alim.add(getInventaire().get(i));
+                int nb = 0;
+                boolean many = false;
+                for(int j = i; j < getInventaire().size(); j++){    
+                    if(getInventaire().get(j) == getInventaire().get(i)){
+                        nb += 1;
+                        if(many == true){
+                            res = res.substring(0, res.length() - 3);
+                        }
+                        res += " x" + nb;
+                        many = true;
+                    }
+                }
+            }
+            res += " | ";
+        }
+        return res;
     }
 }

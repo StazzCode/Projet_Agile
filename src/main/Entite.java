@@ -9,11 +9,11 @@ public class Entite {
     private char c;
     private ArrayList<Aliments> inventaire;
 
-    public Entite(int x, int y, ArrayList<Aliments> inventaire) {
+    public Entite(int x, int y) {
         this.x = x;
         this.y = y;
         //this.c = c;
-        this.inventaire = inventaire;
+        this.inventaire = new ArrayList<Aliments>();
     }
 
     public int getX() {
@@ -38,5 +38,13 @@ public class Entite {
 
     public char getC() {
         return c;
+    }
+
+    public ArrayList<Aliments> getInventaire(){
+        return this.inventaire;
+    } 
+
+    public void addToInventaire(Aliments aliment){
+        this.inventaire.add(aliment);
     }
 }
