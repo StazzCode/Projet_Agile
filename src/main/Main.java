@@ -25,16 +25,29 @@ public class Main {
         }
         System.out.println(result);
         Scanner sc2 = new Scanner(System.in);
-        int choix = sc2.nextInt();
-        //sc2.close();
+        int choix = 3;
+        try{
+            String choixS = sc2.nextLine();
+            choix = Integer.parseInt(choixS);
+            if(choix == 1 || choix == 2 || choix == 3){
+                
+            }else{
+                System.out.println("Choix impossible !");
+                choix = 0;
+            }
+        }catch(NumberFormatException e){}
         return choix;
     }
 
     //-------------FIN AFFICHAGE MENU TEXT---------------
     
     public static void main(String[] args){
-        System.out.println(afficherMenuPrincipal());
-        int x = 9;
+        int choice = 0;
+        while(choice == 0){
+            choice = afficherMenuPrincipal() ;
+        }
+        if(choice == 1){
+            int x = 9;
         int y = 4;
         int y2 = y + 1;
 
@@ -100,7 +113,7 @@ public class Main {
             }
             carte.displayCarte();
         }
-        sc.close();
+        
         
 
         /*
@@ -119,5 +132,10 @@ public class Main {
         System.out.println();
         System.out.println("Bravo votre client est satisfait !");
         */
+        sc.close();
+        }else{
+            System.out.println("Au revoir !");
+        }
+        
     } 
 }
