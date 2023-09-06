@@ -69,13 +69,13 @@ public class Main {
         String chaine;
         boolean transi = true;
         while (transi) {
+            if (isNearClient(c, carte.getGrid())){
+                System.out.print("Voulez vous donner une commande?\n");
+            }
             chaine = sc.nextLine();
             chaine = chaine.toUpperCase();
             System.out.println(CLEARSCREEN);
 
-            if (isNearClient(c, carte.getGrid())){
-                
-            }
 
             if (chaine.equals(c.getZ())){
                 try{
@@ -169,17 +169,10 @@ public class Main {
 
     public static boolean isNearClient (Character c, Entite[][] grid){
         boolean near = false;
-        int xC;
-        int yC;
-
-        for (int y = c.getY()-1; y <= c.getY()+1; y++) {
-            for (int x = c.getX()-1; x <= c.getX()+1; x++){
-                if (grid[y][x] != null){
-                    xC = x;
-                    yC = y;
-                    near = true;
-                }
-            }
+        int xC=c.getX();
+        int yC=c.getY();
+        if(grid[yC-1][xC].isClient() || grid[yC+1][xC].isClient() || grid[yC][xC-1].isClient()||grid[yC][xC+1].isClient()){
+            near=true;
         }
 
         return near;
