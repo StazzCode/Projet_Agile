@@ -106,7 +106,7 @@ public class Main {
                     System.out.print(i + "." + isNearMeuble(c, carte.getGrid()).getIng().get(i) + " ");
                 }
 
-                System.out.println("quel est le chiffre de l'ingredient que tu souhaite?");
+                System.out.println(" | Quel est le chiffre de l'ingredient que tu souhaite?");
 
                 chaine = sc.nextLine();
                 chaine = chaine.toUpperCase();
@@ -189,7 +189,7 @@ public class Main {
                 System.out.println();
                 System.out.println("Le jeu est terminé.");
                 System.out.println();
-                System.out.println("Votre score final est : " + score + " points");
+                System.out.println("Votre score final est : " + (char)27 + "[32m" + score + (char)27 + "[0m" + " points");
                 System.out.println();
                 System.out.println("Au revoir !");
             }

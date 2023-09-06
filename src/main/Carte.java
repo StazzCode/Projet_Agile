@@ -31,21 +31,25 @@ public class Carte{
         for(int i = 0;i < carte.length;i ++){
             for(int j = 0; j < carte[i].length;j++){
                 if(j == 0||j == 19){
-                    carte[i][j] = new Mur(false, "|");
+                    carte[i][j] = new Mur(false, "\u2503");
                 }else if(i == 0 || i == 9){
-                    carte[i][j] = new Mur(false, "-");
+                    carte[i][j] = new Mur(false, "\u2501");
                 }else{
                     carte[i][j] = new Mur(true, " ");
                 }
+                carte[0][0] = new Mur(false, "┏");
+                carte[0][19] = new Mur(false, "\u2513");
+                carte[9][0] = new Mur(false, "\u2517");
+                carte[9][19] = new Mur(false, "\u251B");
                 this.grid[i][j] = new Empty(i, j);
             }
         }
-        this.grid[1][1] = new Meuble(1, 1, 'F', "viande");
-        this.grid[1][3] = new Meuble(1, 3, 'F', "fromage");
-        this.grid[1][5] = new Meuble(1, 5, 'F', "sauce");
-        this.grid[1][7] = new Meuble(1, 7, 'F', "legume");
-        this.grid[1][9] = new Meuble(1, 7, 'F', "plant");
-         this.grid[1][15] = new Meuble(1, 7, 'H');
+        this.grid[1][1] = new Meuble(1, 1, (char)27 + "[47m" + "F" + (char)27 + "[49m", "viande");
+        this.grid[1][3] = new Meuble(1, 3, (char)27 + "[47m" + "F" + (char)27 + "[49m", "fromage");
+        this.grid[1][5] = new Meuble(1, 5, (char)27 + "[47m" + "F" + (char)27 + "[49m", "sauce");
+        this.grid[1][7] = new Meuble(1, 7, (char)27 + "[47m" + "F" + (char)27 + "[49m", "legume");
+        this.grid[1][9] = new Meuble(1, 7, (char)27 + "[47m" + "F" + (char)27 + "[49m", "plant");
+        this.grid[1][15] = new Meuble(1, 7, (char)27 + "[41m" + (char)27 + "[33m" + "H" + (char)27 + "[49m" + (char)27 + "[0m");
     }
 
     public void displayCarte(){
@@ -64,17 +68,17 @@ public class Carte{
             
         }
         System.out.println();
-        System.out.println("\n|-------------------------------------------------------------------------------------|");
-            System.out.println("|0. Spicy Texas : - Boeauf , Chorizzo , Mozarella $ score: 300                        |");
-            System.out.println("|-------------------------------------------------------------------------------------|");
-            System.out.println("|1. Original Bacon : - Bacon , Boeauf , Mozarella , Oignon $ score: 400               |");
-            System.out.println("|-------------------------------------------------------------------------------------|");
-            System.out.println("|2. Margarita : - Mozarella , Basilic , Boeauf $ score: 200                           |");
-            System.out.println("|-------------------------------------------------------------------------------------|");
-            System.out.println("|3. Extra Hot : - Piments , Poulet , Oignon , Chorizzo $ score: 500                   |");
-            System.out.println("|-------------------------------------------------------------------------------------|");
-            System.out.println("|4. Special Papa : - Poulet , Bacon , Chorizzo , Basilic , Sauce Secrete $ score: 800 |");
-            System.out.println("|-------------------------------------------------------------------------------------|\n\n");
+        System.out.println("\n┌───────────────────────────────────────────────────────────────────────────────────┐");
+            System.out.println("│Spicy Texas : - Boeauf , Chorizzo , Mozarella                        $ score : 300 │");
+            System.out.println("├───────────────────────────────────────────────────────────────────────────────────┤");
+            System.out.println("│Original Bacon : - Bacon , Boeauf , Mozarella , Oignon               $ score : 400 │");
+            System.out.println("├───────────────────────────────────────────────────────────────────────────────────┤");
+            System.out.println("│Margarita : - Mozarella , Basilic , Boeauf                           $ score : 200 │");
+            System.out.println("├───────────────────────────────────────────────────────────────────────────────────┤");
+            System.out.println("│Extra Hot : - Piments , Poulet , Oignon , Chorizzo                   $ score : 500 │");
+            System.out.println("├───────────────────────────────────────────────────────────────────────────────────┤");
+            System.out.println("│Special Papa : - Poulet , Bacon , Chorizzo , Basilic , Sauce Secrete $ score : 800 │");
+            System.out.println("└───────────────────────────────────────────────────────────────────────────────────┘\n\n");
     }
 
     public ArrayList<Client> getClientsList() {

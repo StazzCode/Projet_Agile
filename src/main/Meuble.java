@@ -3,15 +3,15 @@ package main;
 import java.util.ArrayList;
 public class Meuble extends Entite{
 
-    private char symbole;
+    private String symbole;
     private String type = null;
 
-    public Meuble(int x, int y , char c){
+    public Meuble(int x, int y , String c){
         super(x,y);
         this.symbole = c;
     }
 
-    public Meuble(int x, int y , char c, String type){
+    public Meuble(int x, int y , String c, String type){
         super(x,y);
         this.symbole = c;
         this.type = type;
@@ -29,7 +29,7 @@ public class Meuble extends Entite{
         return super.getInventaire();
     }
 
-    public char getC(){
+    public String getC(){
         return this.symbole;
     }
 
@@ -45,7 +45,7 @@ public class Meuble extends Entite{
         return false;
     }
 
-    public char getSymbole() {
+    public String getSymbole() {
         return symbole;
     }
 

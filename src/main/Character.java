@@ -1,6 +1,7 @@
 package main;
 
 import java.util.ArrayList;
+import java.lang.Character.*;
 
 public class Character extends Entite{
 
@@ -16,7 +17,7 @@ public class Character extends Entite{
     private int score = 0;
     private int x;
     private int y;
-    private char c= 'P';
+    private String c= (char)27 + "[33m" + "\u25C9" + (char)27 + "[39m";
     private ArrayList<Aliments> inventaire;
     private ArrayList<Pizza> inventairePizza;
 
@@ -82,7 +83,7 @@ public class Character extends Entite{
         return this.inventaire;
     }
 
-    public char getC() {
+    public String getC() {
         return c;
     }
 

@@ -26,12 +26,13 @@ public class InteractionTest {
         this.carte = new Carte(perso);
         this.client = new Client(2,3);
 
+        carte.initCarte();
         carte.getGrid()[perso.getY()][perso.getX()] = perso;
         carte.getGrid()[client.getY()][client.getX()] = client;
     }
 
     @Test
     public void isNearClientTest(){
-        assertTrue(Main.isNearClient(perso,carte.getGrid()));
+        assertEquals(client,Main.isNearClient(perso,carte.getGrid()));
     }
 }
