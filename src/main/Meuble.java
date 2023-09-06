@@ -34,8 +34,6 @@ public class Meuble extends Entite{
         return false;
     }
 
-
-
     public char getSymbole() {
         return symbole;
     }

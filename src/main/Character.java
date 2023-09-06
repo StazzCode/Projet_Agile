@@ -42,8 +42,6 @@ public class Character extends Entite{
         return D;
     }
 
-    
-
     public char getC() {
         return c;
     }

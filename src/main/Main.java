@@ -81,7 +81,7 @@ public class Main {
                 try{
                     c.moveUp(carte.getGrid());
                     carte.getGrid()[c.getY() + 1][c.getX()] = new Empty(c.getY() + 1, c.getX()) ;
-                    carte.getGrid()[c.getY()][c.getX()] = c ;
+                    carte.getGrid()[c.getY()][c.getX()] = c;
                 }catch(InvalidDeplacement e){
                     System.out.println("Déplacement vers le haut invalide");
                 }
@@ -105,8 +105,7 @@ public class Main {
                 try {
                     c.moveRight(carte.getGrid());
                     carte.getGrid()[c.getY()][c.getX() - 1] = new Empty(c.getY(), c.getX() - 1) ;
-                    carte.getGrid()[c.getY()][c.getX()] = c ;
-                    
+                    carte.getGrid()[c.getY()][c.getX()] = c;
                 } catch (InvalidDeplacement e) {
                     System.out.println("Déplacement vers la droite invalide");
                 }
@@ -117,6 +116,7 @@ public class Main {
                 System.out.println("Saisie invalide");
             }
             carte.displayCarte();
+            System.out.println("Ton inventaire :" + c.inventaireToString() + "");
             }
         }else if(choice == 2){
             demoAlimentsInventaire(c, sc);
@@ -125,12 +125,14 @@ public class Main {
 
     public static void demoAlimentsInventaire(Character c,Scanner sc){
 
+        
+
+        Client client = new Client(2, 2);
+        
         c.addToInventaire(Aliments.BOEAUF);
         c.addToInventaire(Aliments.MOZZARELLA);
         c.addToInventaire(Aliments.CHORIZZO);
         c.addToInventaire(Aliments.BOEAUF);
-
-        Client client = new Client(2, 2);
 
         System.out.println();
         System.out.println("Ton inventaire :" + c.inventaireToString() + "");
@@ -181,7 +183,6 @@ public class Main {
                 }
             }
         }
-
         return near;
     }
 }
