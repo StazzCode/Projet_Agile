@@ -5,10 +5,10 @@
  | |   | |/ / / / (_| | | |__| |  __/ | | |  | (_| | |_) | (_| | 
  |_|   |_/___/___\__,_| |_____/ \___|_| |_|   \__,_| .__/ \__,_| 
                                                    | |           
-                                                   |_|           
-                       ___
+                                                   |_|          
+                         ___
                         |  ~~--.    1 ) Jouer une partie !
-                        |%=@%%/     2 ) Meilleurs Joueurs
+                        |%=@%%/     2 ) Meilleurs Joueurs (pour l'instant demo de l'inventaire)
                         |o%%%/      3 ) Quitter
                      __ |%%o/
                _,--~~ | |(_/ ._

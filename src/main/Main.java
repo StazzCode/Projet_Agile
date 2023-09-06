@@ -43,19 +43,19 @@ public class Main {
     //-------------FIN AFFICHAGE MENU TEXT---------------
     
     public static void main(String[] args){
+        
+        Scanner sc = new Scanner(System.in);
+
         int choice = 0;
         while(choice == 0){
             choice = afficherMenuPrincipal() ;
         }
-        if(choice == 1){
-            int x = 9;
+        int x = 9;
         int y = 4;
         int y2 = y + 1;
-
-        ArrayList<Aliments> inventaire = new ArrayList<Aliments>();
-        inventaire.add(Aliments.BOEAUF);
-
-        Character c = new Character(x, y, inventaire);
+        Character c = new Character(x, y);
+        if(choice == 1){      
+        
         Client client = new Client(x,y2);
         Carte carte = new Carte(c);
 
@@ -65,13 +65,12 @@ public class Main {
         carte.getGrid()[c.getY()][c.getX()] = c;
         carte.getGrid()[client.getY()][client.getX()] = client;
         carte.displayCarte();
-
         
-        Scanner sc = new Scanner(System.in);
         String chaine;
         boolean transi = true;
         while (transi) {
             chaine = sc.nextLine();
+            chaine = chaine.toUpperCase();
             System.out.println(CLEARSCREEN);
             if (chaine.equals(c.getZ())){
                 try{
@@ -109,35 +108,62 @@ public class Main {
                     // TODO: handle exception
                     System.out.println("Déplacement vers la droite invalide");
                 }
-            }else{
+            }else if(chaine.equals("X")){
                 transi = false;
+                System.out.println("Au revoir !");
+            }else{
+                System.out.println("Saisie invalide");
             }
             carte.displayCarte();
-        }
-        
-        
 
-        /*
-        System.out.println();
-        System.out.println("Donner une pizza : " + inventaire.get(0).getName() + " | Appuyez sur Entrer");
-
-        Scanner sc = new Scanner(System.in);
-        String chaine;
-        boolean action = false;
-        while (!action) {
-            chaine = sc.nextLine();
-            if (chaine.equals(""));
-            action = true;
+            }
+        }else if(choice == 2){
+            demoAlimentsInventaire(c, sc);
         }
+    }
 
-        System.out.println();
-        System.out.println("Bravo votre client est satisfait !");
-        */
-        sc.close();
-        }else{
-            System.out.println("Au revoir !");
-        }
-        
-    } 
-}
+    public static void demoAlimentsInventaire(Character c,Scanner sc){
+        Pizza pizz1 = Pizza.SPICY_TEXAS;
+            Pizza pizz2 = Pizza.SPICY_TEXAS;
+
+            c.addToInventaire(Aliments.BOEAUF);
+            c.addToInventaire(Aliments.MOZZARELLA);
+            c.addToInventaire(Aliments.CHORIZZO);
+            c.addToInventaire(Aliments.BOEAUF);
+
+            System.out.println();
+            System.out.println("Ton inventaire :" + c.inventaireToString() + "");
+            System.out.println("Donner une pizza : " + pizz1.getName() + " | Appuyez sur Entrer");
+
+            String mChaine;
+            boolean action = false;
+            while (!action) {
+                mChaine = sc.nextLine();
+                if(pizz1.verifPizza(c.getInventaire())){ 
+                    System.out.println("Bravo votre client est satisfait !");
+                    action = true;
+                }else{
+                    System.out.println("Vous n'avez pas les ingredients necessaire");
+                }
+            }
+
+            System.out.println();
+            System.out.println("Ton inventaire :" + c.inventaireToString() + "");
+            System.out.println("Donner une pizza : " + pizz2.getName() + " | Appuyez sur Entrer");
+
+            
+            action = false;
+            while (!action) {
+                mChaine = sc.nextLine();
+                if(pizz2.verifPizza(c.getInventaire())){
+                    action = true;
+                }else{
+                    System.out.println("Vous n'avez pas les ingredients necessaire");
+                }
+            }
+            System.out.println();
+            } 
+    }
+
+    
 

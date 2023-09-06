@@ -28,9 +28,16 @@ public enum Pizza{
 
     public boolean verifPizza(ArrayList<Aliments> pizzaPerso){
         boolean isGood = true;
+        ArrayList<Aliments> ingredients = new ArrayList<Aliments>();
         for(int i = 0; i < this.AlimentsList.size(); i++){
-            if(!pizzaPerso.contains(this.AlimentsList.get(i))){
+            if(!pizzaPerso.contains(this.AlimentsList.get(i)) && this.AlimentsList.get(i) != null){
                 isGood = false;
+            }
+            ingredients.add(this.AlimentsList.get(i));
+        }
+        if(isGood == true){
+            for(int i =0; i < ingredients.size(); i++){
+                pizzaPerso.remove(ingredients.get(i));
             }
         }
         return isGood;

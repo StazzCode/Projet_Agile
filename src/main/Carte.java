@@ -31,14 +31,17 @@ public class Carte{
         for(int i = 0;i < carte.length;i ++){
             for(int j = 0; j < carte[i].length;j++){
                 if(j == 0||j == 19){
-                    carte[i][j] = new Meuble(false, "|");
+                    carte[i][j] = new Mur(false, "|");
                 }else if(i == 0 || i == 9){
-                    carte[i][j] = new Meuble(false, "-");
+                    carte[i][j] = new Mur(false, "-");
                 }else{
-                    carte[i][j] = new Meuble(true, " ");
+                    carte[i][j] = new Mur(true, " ");
                 }
+                this.grid[i][j] = new Empty(i, j);
             }
         }
+        this.grid[2][2] = new Meuble(2, 2, 'F');
+        this.grid[2][3] = new Meuble(2, 3, 'H');
     }
 
     public void displayCarte(){
@@ -46,7 +49,7 @@ public class Carte{
             for(int j = 0; j < carte[i].length;j++){
                 if (grid[i][j] == a){
                     System.out.print(a.getC());
-                }else if (clientsList.contains(grid[i][j])){
+                }else if (clientsList.contains(grid[i][j]) || this.grid[i][j].isMeuble()){
                     System.out.print(grid[i][j].getC());
                 }else{
                     System.out.print(carte[i][j].getName());
