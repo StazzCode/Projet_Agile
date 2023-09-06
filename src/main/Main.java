@@ -2,7 +2,7 @@ package main;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.ArrayList;
+import java.time.LocalTime;
 import java.util.Scanner;
 
 public class Main {
@@ -68,15 +68,22 @@ public class Main {
         
         String chaine;
         boolean transi = true;
-        while (transi) {
+        LocalTime begin = LocalTime.now();
+        LocalTime end = begin.plusMinutes(3);
+        while (transi && begin.isBefore(end)) {
             if (isNearClient(c, carte.getGrid())){
                 System.out.print("Voulez vous donner une commande?\n");
             }
             chaine = sc.nextLine();
             chaine = chaine.toUpperCase();
             System.out.println(CLEARSCREEN);
-
-
+            begin = LocalTime.now();
+            if(end.getMinute()-begin.getMinute() < 1){
+                System.out.println(end.getSecond() - begin.getSecond()+" seconde(s) restante");
+            }else{
+               System.out.println(end.getMinute()-begin.getMinute()+" Minute(s) restante\n"); 
+            }
+            
             if (chaine.equals(c.getZ())){
                 try{
                     c.moveUp(carte.getGrid());
