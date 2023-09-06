@@ -51,12 +51,16 @@ public class Main {
             choice = afficherMenuPrincipal() ;
         }
         int x = 9;
-        int y = 4;
-        int y2 = y + 1;
+        int y = 3;
+        int y2 = y + 2;
         Character c = new Character(x, y);
         if(choice == 1){      
         
-        Client client = new Client(x,y2);
+        Client client = new Client(x,y2,Pizza.SPICY_TEXAS);
+        c.addToInventaire(Aliments.BOEAUF);
+        c.addToInventaire(Aliments.MOZZARELLA);
+        c.addToInventaire(Aliments.CHORIZZO);
+        c.addToInventaire(Aliments.BOEAUF);
         Carte carte = new Carte(c);
 
         carte.getClientsList().add(client);
@@ -70,13 +74,16 @@ public class Main {
         boolean transi = true;
         while (transi) {
             if (isNearClient(c, carte.getGrid())){
-                System.out.print("Voulez vous donner une commande?\n");
+                if(isPossessingCommand(c, client)){
+                    System.out.print("Voulez vous donner une commande?\nAppuyez sur Entree  pour valider ou continuez votre chemin.\n");
+                }else{
+                    System.out.println("Veuillez aller chercher la commande!\n");
+                }
             }
+            System.out.println("Ton inventaire :" + c.inventaireToString() + "");
             chaine = sc.nextLine();
             chaine = chaine.toUpperCase();
             System.out.println(CLEARSCREEN);
-
-
             if (chaine.equals(c.getZ())){
                 try{
                     c.moveUp(carte.getGrid());
@@ -176,6 +183,14 @@ public class Main {
         }
 
         return near;
+    }
+
+    public static boolean isPossessingCommand(Character c, Client client){
+        boolean possessing=false;
+        if(client.getCommande().verifPizza(c.getInventaire())){
+            possessing = true;
+        }
+        return possessing;
     }
 }
     

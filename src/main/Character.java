@@ -8,6 +8,7 @@ public class Character extends Entite{
     private final String Q = "Q";
     private final String S = "S";
     private final String D = "D";
+    private final String E = "E";
  
     private int x;
     private int y;
@@ -43,6 +44,10 @@ public class Character extends Entite{
     }
 
     
+
+    public String getE() {
+        return E;
+    }
 
     public char getC() {
         return c;
