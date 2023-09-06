@@ -71,9 +71,9 @@ public class Carte{
             System.out.println("|-------------------------------------------------------------------------------------|");
             System.out.println("|2. Margarita : - Mozarella , Basilic , Boeauf $ score: 200                           |");
             System.out.println("|-------------------------------------------------------------------------------------|");
-            System.out.println("|4. Extra Hot : - Piments , Poulet , Oignon , Chorizzo $ score: 500                   |");
+            System.out.println("|3. Extra Hot : - Piments , Poulet , Oignon , Chorizzo $ score: 500                   |");
             System.out.println("|-------------------------------------------------------------------------------------|");
-            System.out.println("|5. Special Papa : - Poulet , Bacon , Chorizzo , Basilic , Sauce Secrete $ score: 800 |");
+            System.out.println("|4. Special Papa : - Poulet , Bacon , Chorizzo , Basilic , Sauce Secrete $ score: 800 |");
             System.out.println("|-------------------------------------------------------------------------------------|\n\n");
     }
 

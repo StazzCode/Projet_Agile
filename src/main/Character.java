@@ -11,11 +11,20 @@ public class Character extends Entite{
 
     private final String E = "E";
  
+
+    private String name = "";
+    private int score = 0;
     private int x;
     private int y;
     private char c= 'P';
     private ArrayList<Aliments> inventaire;
     private ArrayList<Pizza> inventairePizza;
+
+    public Character(int x, int y){
+        super(x, y);
+        this.inventairePizza = new ArrayList<Pizza>();
+        this.inventaire = new ArrayList<Aliments>();
+    }
 
     public boolean isMeuble(){
         return false;
@@ -29,18 +38,28 @@ public class Character extends Entite{
         return false;
     }
 
+    public void setScore(int score){
+        this.score = score;
+    }
+
+    public int getScore(){
+        return this.score;
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
     public ArrayList<Pizza> getInventairePizza() {
         return this.inventairePizza;
     }
 
     public void addToInventaire(Aliments aliment){
         this.inventaire.add(aliment);
-    }
-
-    public Character(int x, int y){
-        super(x, y);
-        this.inventairePizza = new ArrayList<Pizza>();
-        this.inventaire = new ArrayList<Aliments>();
     }
 
     public String getZ() {

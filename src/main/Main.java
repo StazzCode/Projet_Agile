@@ -47,6 +47,7 @@ public class Main {
         
         int score = 0;
 
+        Classement classement = new Classement();
         Scanner sc = new Scanner(System.in);
 
         int choice = 0;
@@ -58,8 +59,14 @@ public class Main {
         int y2 = y + 2;
         int x3= x-2;
         int x4 = x+2;
+        String chaine;
         Character c = new Character(x, y);
+
         if(choice == 1){      
+        System.out.println("Ton nom PAPAAA??");
+        chaine = sc.nextLine();
+        chaine = chaine.toUpperCase();
+        c.setName(chaine);
 
         Carte carte = new Carte(c);
 
@@ -84,7 +91,7 @@ public class Main {
         }
         carte.displayCarte();
         
-        String chaine;
+        
         boolean transi = true;
         LocalTime begin = LocalTime.now();
         LocalTime end = begin.plusMinutes(3);
@@ -120,16 +127,19 @@ public class Main {
             }
             if(isNearMeuble(c, carte.getGrid()) != null && isNearMeuble(c, carte.getGrid()).getType() == null){
                 if(isNearMeuble(c, carte.getGrid()).getPiz(c.getInventaire()).size() > 0){
-                    System.out.println("Quel Pizza souhaite tu fabriquer:" + isNearMeuble(c, carte.getGrid()).getPiz(c.getInventaire()).size());
+                    System.out.println("Quel Pizza souhaite tu fabriquer:");
 
                     chaine = sc.nextLine();
                     chaine = chaine.toUpperCase();
                     try{
-                        c.addToInventairePizza(isNearMeuble(c, carte.getGrid()).getPiz(c.getInventaire()).get(Integer.parseInt(chaine)));
-                        
+                        if(Integer.parseInt(chaine) <= 4){
+                             c.addToInventairePizza(isNearMeuble(c, carte.getGrid()).getPiz(c.getInventaire()).get(Integer.parseInt(chaine)));
+                        }else{
+                             System.out.println("Cette pizza n'existe pas!!");
+                        }
                     }catch (NumberFormatException e) {}
                 }else{
-                     System.out.println("Vous n'avez pas assez d'ingredients");
+                    System.out.println("Vous n'avez pas assez d'ingredients");
                 }
             }
             chaine = sc.nextLine();
@@ -191,6 +201,8 @@ public class Main {
 
                     score += isNearClient(c, carte.getGrid()).getCommande().getScore();
                     isNearClient(c, carte.getGrid()).setCommande();
+                    c.setScore(score);
+                    
 
                     System.out.println("Bravo le Client est satisfait !");
                 }else{
@@ -210,15 +222,16 @@ public class Main {
             carte.displayCarte();
             System.out.println("Tes ingredients :" + c.inventaireToString()  + "");
             System.out.println("Tes Pizza :" + c.getInventairePizza()  + "");
-            System.out.println("Ton Score :" + score  + "");
+            System.out.println("Ton Score :" + c.getScore()  + "");
             }
-            
+            classement.enregistrerScore(c.getName(), c.getScore());
         }else if(choice == 2){
-            demoAlimentsInventaire(c, sc);
+            classement.classementToString();
         }
+        
     }
 
-    public static void demoAlimentsInventaire(Character c,Scanner sc){
+    /*public static void demoAlimentsInventaire(Character c,Scanner sc){
 
         Client client = new Client(2, 2);
         
@@ -259,7 +272,7 @@ public class Main {
             }
             System.out.println();
         } 
-    
+    */
     
 
     public static Client isNearClient (Character c, Entite[][] grid){
