@@ -8,22 +8,34 @@ public class Character extends Entite{
     private final String Q = "Q";
     private final String S = "S";
     private final String D = "D";
+
+    private final String E = "E";
  
     private int x;
     private int y;
     private char c= 'P';
     private ArrayList<Aliments> inventaire;
+    private ArrayList<Pizza> inventairePizza;
 
     public boolean isMeuble(){
         return false;
+    }
+
+    public String getE() {
+        return E;
     }
 
     public boolean isClient(){
         return false;
     }
 
+    public ArrayList<Pizza> getInventairePizza() {
+        return inventairePizza;
+    }
+
     public Character(int x, int y){
         super(x, y);
+        this.inventairePizza = new ArrayList<Pizza>();
     }
 
     public String getZ() {
@@ -40,6 +52,10 @@ public class Character extends Entite{
 
     public String getD() {
         return D;
+    }
+
+    public ArrayList<Aliments> getInventaire() {
+        return inventaire;
     }
 
     public char getC() {

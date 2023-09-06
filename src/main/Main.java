@@ -2,7 +2,7 @@ package main;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.ArrayList;
+import java.time.LocalTime;
 import java.util.Scanner;
 import java.lang.*;
 
@@ -52,12 +52,15 @@ public class Main {
             choice = afficherMenuPrincipal() ;
         }
         int x = 9;
-        int y = 4;
-        int y2 = y + 1;
+        int y = 3;
+        int y2 = y + 2;
         Character c = new Character(x, y);
         if(choice == 1){      
         
-        Client client = new Client(x,y2);
+        Client client = new Client(x,y2,Pizza.SPICY_TEXAS);
+
+        c.getInventairePizza().add(Pizza.SPICY_TEXAS); // Ajoute un pizza dans l'inventaire à Pizza du joueur.
+
         Carte carte = new Carte(c);
 
         carte.getClientsList().add(client);
@@ -69,9 +72,12 @@ public class Main {
         
         String chaine;
         boolean transi = true;
-        while (transi) {
+        LocalTime begin = LocalTime.now();
+        LocalTime end = begin.plusMinutes(3);
+        while (transi && begin.isBefore(end)) {
             if (isNearClient(c, carte.getGrid())){
-                System.out.print("Voulez vous donner une commande?\n");
+                System.out.println();
+                System.out.println("Donner la commande du Client : " + client.getCommande());
             }
             if(isNearMeuble(c, carte.getGrid()) != null && isNearMeuble(c, carte.getGrid()).getType() != null){
                 System.out.println("contenu du frigo : ");
@@ -101,9 +107,14 @@ public class Main {
 
             chaine = sc.nextLine();
             chaine = chaine.toUpperCase();
+
             System.out.println(CLEARSCREEN);
-
-
+            begin = LocalTime.now();
+            if(end.getMinute()-begin.getMinute() < 1){
+                System.out.println(end.getSecond() - begin.getSecond()+" seconde(s) restante");
+            }else{
+               System.out.println(end.getMinute()-begin.getMinute()+" Minute(s) restante\n"); 
+            }            
             if (chaine.equals(c.getZ())){
                 try{
                     c.moveUp(carte.getGrid());
@@ -139,6 +150,15 @@ public class Main {
             }else if(chaine.equals("X")){
                 transi = false;
                 System.out.println("Au revoir !");
+            }
+            else if(chaine.equals(c.getE()) && isNearClient(c, carte.getGrid())){
+                if(c.getInventairePizza().contains(client.getCommande())){
+                    c.getInventairePizza().remove(client.getCommande());
+                    client.getInventairePizza().add(client.getCommande());
+                    System.out.println("Bravo le Client est satisfait !");
+                }else{
+                    System.out.println("Vous n'avez pas la bonne pizza !");
+                }
             }else{
                 System.out.println("Saisie invalide");
             }
@@ -218,6 +238,14 @@ public class Main {
             near = (Meuble) grid[yC][xC+1];
         }
         return near;
+    }
+
+    public static boolean isPossessingCommand(Character c, Client client){
+        boolean possessing=false;
+        if(client.getCommande().verifPizza(c.getInventaire())){
+            possessing = true;
+        }
+        return possessing;
     }
 }
     
