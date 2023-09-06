@@ -8,7 +8,9 @@ public enum Aliments {
     BOEAUF("boeauf", 5, "viande"),
     BACON("bacon", 3, "viande"),
     POULET("poulet", 4, "viande"),
-    OIGNONS("oignons", 3, "legume");
+    OIGNONS("oignons", 3, "legume"),
+    BASILIC("basilic",1,"plant"),
+    SAUCE_SECRETE("sauce secrete",10,"sauce");
     
     private String name;
     private int price;
