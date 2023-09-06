@@ -126,16 +126,16 @@ public class Main {
 
     public static void demoAlimentsInventaire(Character c,Scanner sc){
         Pizza pizz1 = Pizza.SPICY_TEXAS;
-            Pizza pizz2 = Pizza.SPICY_TEXAS;
+        Pizza pizz2 = Pizza.SPICY_TEXAS;
 
-            c.addToInventaire(Aliments.BOEAUF);
-            c.addToInventaire(Aliments.MOZZARELLA);
-            c.addToInventaire(Aliments.CHORIZZO);
-            c.addToInventaire(Aliments.BOEAUF);
+        c.addToInventaire(Aliments.BOEAUF);
+        c.addToInventaire(Aliments.MOZZARELLA);
+        c.addToInventaire(Aliments.CHORIZZO);
+        c.addToInventaire(Aliments.BOEAUF);
 
-            System.out.println();
-            System.out.println("Ton inventaire :" + c.inventaireToString() + "");
-            System.out.println("Donner une pizza : " + pizz1.getName() + " | Appuyez sur Entrer");
+        System.out.println();
+        System.out.println("Ton inventaire :" + c.inventaireToString() + "");
+        System.out.println("Donner une pizza : " + pizz1.getName() + " | Appuyez sur Entrer");
 
             String mChaine;
             boolean action = false;
@@ -164,9 +164,9 @@ public class Main {
                 }
             }
             System.out.println();
-            } 
-        }
-    }
+        } 
+    
+    
 
     public static boolean isNearClient (Character c, Entite[][] grid){
         boolean near = false;
