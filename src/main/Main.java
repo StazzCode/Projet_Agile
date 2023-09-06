@@ -78,7 +78,6 @@ public class Main {
                 System.out.println();
                 System.out.println("Donner la commande du Client : " + client.getCommande());
             }
-            System.out.println("Ton inventaire :" + c.inventaireToString() + "");
             chaine = sc.nextLine();
             chaine = chaine.toUpperCase();
 
