@@ -45,6 +45,8 @@ public class Main {
     
     public static void main(String[] args){
         
+        int score = 0;
+
         Scanner sc = new Scanner(System.in);
 
         int choice = 0;
@@ -74,6 +76,7 @@ public class Main {
         boolean transi = true;
         LocalTime begin = LocalTime.now();
         LocalTime end = begin.plusMinutes(3);
+        //LocalTime end = begin.plusSeconds(3);
         while (transi && begin.isBefore(end)) {
             if (isNearClient(c, carte.getGrid())){
                 System.out.println();
@@ -149,12 +152,20 @@ public class Main {
                 }
             }else if(chaine.equals("X")){
                 transi = false;
+                System.out.println();
+                System.out.println("Le jeu est terminé.");
+                System.out.println();
+                System.out.println("Votre score final est : " + score + " points");
+                System.out.println();
                 System.out.println("Au revoir !");
             }
             else if(chaine.equals(c.getE()) && isNearClient(c, carte.getGrid())){
                 if(c.getInventairePizza().contains(client.getCommande())){
                     c.getInventairePizza().remove(client.getCommande());
                     client.getInventairePizza().add(client.getCommande());
+
+                    score += client.getCommande().getScore();
+
                     System.out.println("Bravo le Client est satisfait !");
                 }else{
                     System.out.println("Vous n'avez pas la bonne pizza !");
@@ -162,9 +173,18 @@ public class Main {
             }else{
                 System.out.println("Saisie invalide");
             }
+            if (end.isBefore(begin)){
+                System.out.println();
+                System.out.println("Le jeu est terminé.");
+                System.out.println();
+                System.out.println("Votre score final est : " + score + " points");
+                System.out.println();
+                System.out.println("Au revoir !");
+            }
             carte.displayCarte();
             System.out.println("Ton inventaire :" + c.inventaireToString()  + "");
             }
+            
         }else if(choice == 2){
             demoAlimentsInventaire(c, sc);
         }
