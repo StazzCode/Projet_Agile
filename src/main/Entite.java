@@ -8,15 +8,21 @@ public abstract class Entite {
     private int y;
     private String c;
     private ArrayList<Aliments> inventaire;
+    private ArrayList<Pizza> inventairePizza;
 
     public Entite(int x, int y) {
         this.x = x;
         this.y = y;
         this.inventaire = new ArrayList<Aliments>();
+        this.inventairePizza = new ArrayList<Pizza>();
     }
 
     public int getX() {
         return x;
+    }
+
+    public ArrayList<Pizza> getInventairePizza() {
+        return inventairePizza;
     }
 
     public int getY() {

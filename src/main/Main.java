@@ -53,20 +53,28 @@ public class Main {
         int x = 9;
         int y = 3;
         int y2 = y + 2;
+        int x3= x-2;
+        int x4 = x+2;
         Character c = new Character(x, y);
         if(choice == 1){      
         
         Client client = new Client(x,y2,Pizza.SPICY_TEXAS);
+        Client cliente = new Client(x3,y2,Pizza.ORIGINAL_BACON);
+        Client clint = new Client(x4,y2);
 
         c.getInventairePizza().add(Pizza.SPICY_TEXAS); // Ajoute un pizza dans l'inventaire à Pizza du joueur.
 
         Carte carte = new Carte(c);
 
         carte.getClientsList().add(client);
+        carte.getClientsList().add(cliente);
+        carte.getClientsList().add(clint);
 
         carte.initCarte();
         carte.getGrid()[c.getY()][c.getX()] = c;
         carte.getGrid()[client.getY()][client.getX()] = client;
+        carte.getGrid()[cliente.getY()][cliente.getX()] = cliente;
+        carte.getGrid()[clint.getY()][clint.getX()] = clint;
         carte.displayCarte();
         
         String chaine;
@@ -75,8 +83,22 @@ public class Main {
         LocalTime end = begin.plusMinutes(3);
         while (transi && begin.isBefore(end)) {
             if (isNearClient(c, carte.getGrid())){
-                System.out.println();
-                System.out.println("Donner la commande du Client : " + client.getCommande());
+                /*int xNC = whoIsClient(c, carte.getGrid()).getX();
+                int yNC = whoIsClient(c, carte.getGrid()).getY();
+                System.out.println(xNC + ", " + yNC);
+                Pizza pNC = carte.getGrid()[yNC][xNC].getInventairePizza().get(0); */
+                Client clienta = whoIsClient(c,carte.getGrid());
+                if(clienta.getX() ==client.getX() && clienta.getY()== client.getY()){
+                    System.out.println();
+                    System.out.println("Donner la commande du Client : " + client.getCommande());
+                }else if(clienta.getX() ==cliente.getX() && clienta.getY()== cliente.getY()){
+                    System.out.println();
+                    System.out.println("Donner la commande du Client : " + cliente.getCommande());
+                }else{
+                   System.out.println();
+                System.out.println("Donner la commande du Client : " + clint.getCommande()); 
+                }
+                
             }
             chaine = sc.nextLine();
             chaine = chaine.toUpperCase();
@@ -196,6 +218,24 @@ public class Main {
         }
 
         return near;
+    }
+
+    public static Client whoIsClient (Character c, Entite[][] grid){
+        boolean near = false;
+        int xC=c.getX();
+        int yC=c.getY();
+        if(grid[yC-1][xC].isClient()){
+            return new Client(xC,yC-1);
+        }else if(grid[yC+1][xC].isClient()){
+            return new Client(xC,yC+1);
+        }else if (grid[yC][xC-1].isClient()){
+            return new Client(xC-1,yC);
+        }else if(grid[yC][xC+1].isClient()){
+            return new Client(xC+1,yC);
+        }else{
+            return new Client(xC,yC);
+        }
+
     }
 
     public static boolean isPossessingCommand(Character c, Client client){
