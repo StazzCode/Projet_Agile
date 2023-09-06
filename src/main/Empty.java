@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Empty extends Entite{
     
-    private char c= ' ';
+    private String c= " ";
 
-    public Empty(int x, int y,char c) {
+    public Empty(int x, int y,String c) {
         super(x, y);
         this.c = c;
     }
@@ -15,7 +15,7 @@ public class Empty extends Entite{
         super(x, y);
     }
 
-    public char getC(){
+    public String getC(){
         return this.c;
     }
 

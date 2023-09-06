@@ -40,7 +40,7 @@ public abstract class Entite {
     public void setC(String c) {
         this.c = c;
     }
-    public abstract char getC();
+    public abstract String getC();
 
     public abstract boolean isMeuble();
 

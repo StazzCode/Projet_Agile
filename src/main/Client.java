@@ -7,7 +7,7 @@ public class Client extends Entite {
     
     private int x;
     private int y;
-    private char c= 'C';
+    private String c= (char)27 + "[34m" + "\u25C9" + (char)27 + "[0m";
     private ArrayList<Pizza> inventairePizza;
     private Pizza commande;
 
@@ -24,7 +24,7 @@ public class Client extends Entite {
         return inventairePizza;
     }
 
-    public char getC() {
+    public String getC() {
         return c;
     }
 
