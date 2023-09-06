@@ -38,6 +38,8 @@ public abstract class Entite {
 
     public abstract boolean isMeuble();
 
+    public abstract boolean isClient();
+
     public ArrayList<Aliments> getInventaire(){
         return this.inventaire;
     } 

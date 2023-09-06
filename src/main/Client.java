@@ -20,4 +20,7 @@ public class Client extends Entite {
     public boolean isMeuble(){
         return false;
     }
+    public boolean isClient(){
+        return true;
+    }
 }

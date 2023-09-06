@@ -18,6 +18,10 @@ public class Character extends Entite{
         return false;
     }
 
+    public boolean isClient(){
+        return false;
+    }
+
     public Character(int x, int y){
         super(x, y);
     }
@@ -32,7 +36,7 @@ public class Character extends Entite{
 
     public String getS() {
         return S;
-    }
+    } 
 
     public String getD() {
         return D;
@@ -44,23 +48,32 @@ public class Character extends Entite{
         return c;
     }
 
-    public void moveUp() throws InvalidDeplacement{
+    public void moveUp(Entite[][] grid) throws InvalidDeplacement{
         if(this.getY()-1<=0) throw new InvalidDeplacement("Déplacement vers le haut invalide");
+        if(grid[this.getY()-1][this.getX()].isMeuble()) throw new InvalidDeplacement("Attention au Meuble");
+        if(grid[this.getY()-1][this.getX()].isClient()) throw new InvalidDeplacement("Attention au client");
         this.setY(this.getY()-1);
     }
 
-    public void moveDown()throws InvalidDeplacement{
+
+    public void moveDown(Entite[][] grid)throws InvalidDeplacement{
         if(this.getY()+1>=9) throw new InvalidDeplacement("Déplacement vers le bas invalide");
+        if(grid[this.getY()+1][this.getX()].isMeuble()) throw new InvalidDeplacement("Attention au Meuble");
+        if(grid[this.getY()+1][this.getX()].isClient()) throw new InvalidDeplacement("Attention au client");
         this.setY(this.getY()+1);
     }
 
-    public void moveLeft()throws InvalidDeplacement{
+    public void moveLeft(Entite[][] grid)throws InvalidDeplacement{
         if(this.getX()-1<=0) throw new InvalidDeplacement("Déplacement vers la gauche invalide");
+        if(grid[this.getY()][this.getX()-1].isMeuble()) throw new InvalidDeplacement("Attention au Meuble");
+        if(grid[this.getY()][this.getX()-1].isClient()) throw new InvalidDeplacement("Attention au client");
         this.setX(this.getX()-1);
     }
 
-    public void moveRight()throws InvalidDeplacement{
+    public void moveRight(Entite[][] grid)throws InvalidDeplacement{
         if(this.getX()+1>=19) throw new InvalidDeplacement("Déplacement vers la droite invalide");
+        if(grid[this.getY()][this.getX()+1].isMeuble()) throw new InvalidDeplacement("Attention au Meuble");
+        if(grid[this.getY()][this.getX()+1].isClient()) throw new InvalidDeplacement("Attention au client");
         this.setX(this.getX()+1);
     }
 

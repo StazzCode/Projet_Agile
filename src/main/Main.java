@@ -74,7 +74,7 @@ public class Main {
             System.out.println(CLEARSCREEN);
             if (chaine.equals(c.getZ())){
                 try{
-                    c.moveUp();
+                    c.moveUp(carte.getGrid());
                     carte.getGrid()[c.getY() + 1][c.getX()] = new Empty(c.getY() + 1, c.getX()) ;
                     carte.getGrid()[c.getY()][c.getX()] = c ;
                 }catch(InvalidDeplacement e){
@@ -82,7 +82,7 @@ public class Main {
                 }
             }else if (chaine.equals(c.getS())){
                 try {
-                    c.moveDown();
+                    c.moveDown(carte.getGrid());
                     carte.getGrid()[c.getY() - 1][c.getX()] = new Empty(c.getY() - 1, c.getX()) ;
                     carte.getGrid()[c.getY()][c.getX()] = c ;
                 } catch (InvalidDeplacement e) {
@@ -91,7 +91,7 @@ public class Main {
                 }
             }else if (chaine.equals(c.getQ())){
                 try {
-                    c.moveLeft();
+                    c.moveLeft(carte.getGrid());
                     carte.getGrid()[c.getY()][c.getX() + 1] = new Empty(c.getY(), c.getX() + 1) ;
                     carte.getGrid()[c.getY()][c.getX()] = c ;
                 } catch (InvalidDeplacement e) {
@@ -100,7 +100,7 @@ public class Main {
                 }
             }else if (chaine.equals(c.getD())){
                 try {
-                    c.moveRight();
+                    c.moveRight(carte.getGrid());
                     carte.getGrid()[c.getY()][c.getX() - 1] = new Empty(c.getY(), c.getX() - 1) ;
                     carte.getGrid()[c.getY()][c.getX()] = c ;
                     
@@ -123,7 +123,7 @@ public class Main {
     }
 
     public static void demoAlimentsInventaire(Character c,Scanner sc){
-        Pizza pizz1 = Pizza.SPICY_TEXAS;
+            Pizza pizz1 = Pizza.SPICY_TEXAS;
             Pizza pizz2 = Pizza.SPICY_TEXAS;
 
             c.addToInventaire(Aliments.BOEAUF);

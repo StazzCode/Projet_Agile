@@ -22,4 +22,8 @@ public class Empty extends Entite{
     public boolean isMeuble(){
         return false;
     }
+
+    public boolean isClient(){
+        return false;
+    }
 }

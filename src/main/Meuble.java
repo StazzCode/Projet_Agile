@@ -1,7 +1,7 @@
 package main;
 
 import java.util.ArrayList;
-public class Meuble  extends Entite{
+public class Meuble extends Entite{
 
     private char symbole;
 
@@ -28,6 +28,10 @@ public class Meuble  extends Entite{
 
     public boolean isMeuble(){
         return true;
+    }
+
+    public boolean isClient(){
+        return false;
     }
 
 
