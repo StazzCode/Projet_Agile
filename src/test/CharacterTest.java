@@ -11,21 +11,25 @@ import main.Character;
 import main.Empty;
 import main.InvalidDeplacement;
 import main.Aliments;
+import main.Carte;
 
 public class CharacterTest {
     public Character perso;
     public Aliments chorizzo = Aliments.CHORIZZO;
+    public Carte carte;
     
     @BeforeEach
     public void initialization(){
         this.perso = new Character(2,2);
         this.perso.getInventaire().add(chorizzo);
+        this.carte = new Carte(perso);
+        this.carte.getGrid()[perso.getY()][perso.getX()] = perso;
     }
 
     @Test
     public void moveUpTest(){
         try{
-            perso.moveUp();        
+            perso.moveUp(carte.getGrid());        
         }catch(InvalidDeplacement e){
             System.out.println("Déplacement vers le haut invalide");
         }
@@ -35,7 +39,7 @@ public class CharacterTest {
     @Test
     public void moveDownTest(){
         try{
-            perso.moveDown();
+            perso.moveDown(carte.getGrid());
         } catch (InvalidDeplacement e) {
             System.out.println("Déplacement vers le bas invalide");
         }
@@ -45,7 +49,7 @@ public class CharacterTest {
     @Test
     public void moveLeftTest(){
         try{
-            perso.moveLeft();
+            perso.moveLeft(carte.getGrid());
         } catch (InvalidDeplacement e) {
             System.out.println("Déplacement vers la gauche invalide");
         }
@@ -55,7 +59,7 @@ public class CharacterTest {
     @Test
     public void moveRightTest(){
         try{
-            perso.moveRight();
+            perso.moveRight(carte.getGrid());
         } catch (InvalidDeplacement e) {
             System.out.println("Déplacement vers la droite invalide");
         }
