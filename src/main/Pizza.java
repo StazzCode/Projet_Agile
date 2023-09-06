@@ -5,7 +5,10 @@ import java.util.ArrayList;
 public enum Pizza{
 
     SPICY_TEXAS("spicy texas", Aliments.BOEAUF, Aliments.CHORIZZO, Aliments.MOZZARELLA, null, null),
-    ORIGINAL_BACON("original bacon", Aliments.BACON, Aliments.BOEAUF, Aliments.MOZZARELLA, Aliments.OIGNONS, null);
+    ORIGINAL_BACON("original bacon", Aliments.BACON, Aliments.BOEAUF, Aliments.MOZZARELLA, Aliments.OIGNONS, null),
+    MARGARITa("margarita", Aliments.MOZZARELLA , Aliments.BASILIC , Aliments.BOEAUF,null,null),
+    EXTRA_HOT("extra hot",Aliments.PIMENTS_JALAPENOS , Aliments.POULET , Aliments.OIGNONS , Aliments.CHORIZZO , null),
+    SPECIAL_PAPA("special papa",Aliments.POULET, Aliments.BACON , Aliments.CHORIZZO , Aliments.BASILIC , Aliments.SAUCE_SECRETE);
 
     private String name;
     private ArrayList<Aliments> AlimentsList = new ArrayList<Aliments>();
