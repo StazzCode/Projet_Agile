@@ -57,7 +57,20 @@ public class Carte{
                 
             }
             System.out.println();
+            
         }
+        System.out.println();
+        System.out.println("\n|---------------------------------------------------------------------|");
+            System.out.println("|Spicy Texas : - Boeauf , Chorizzo , Mozarella                        |");
+            System.out.println("|---------------------------------------------------------------------|");
+            System.out.println("|Original Bacon : - Bacon , Boeauf , Mozarella , Oignon               |");
+            System.out.println("|---------------------------------------------------------------------|");
+            System.out.println("|Margarita : - Mozarella , Basilic , Boeauf                           |");
+            System.out.println("|---------------------------------------------------------------------|");
+            System.out.println("|Extra Hot : - Piments , Poulet , Oignon , Chorizzo                   |");
+            System.out.println("|---------------------------------------------------------------------|");
+            System.out.println("|Special Papa : - Poulet , Bacon , Chorizzo , Basilic , Sauce Secrete |");
+            System.out.println("|---------------------------------------------------------------------|\n\n");
     }
 
     public ArrayList<Client> getClientsList() {
