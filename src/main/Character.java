@@ -15,17 +15,27 @@ public class Character extends Entite{
     private int y;
     private char c= 'P';
     private ArrayList<Aliments> inventaire;
+    private ArrayList<Pizza> inventairePizza;
 
     public boolean isMeuble(){
         return false;
+    }
+
+    public String getE() {
+        return E;
     }
 
     public boolean isClient(){
         return false;
     }
 
+    public ArrayList<Pizza> getInventairePizza() {
+        return inventairePizza;
+    }
+
     public Character(int x, int y){
         super(x, y);
+        this.inventairePizza = new ArrayList<Pizza>();
     }
 
     public String getZ() {
@@ -44,7 +54,9 @@ public class Character extends Entite{
         return D;
     }
 
-    
+    public ArrayList<Aliments> getInventaire() {
+        return inventaire;
+    }
 
     public char getC() {
         return c;

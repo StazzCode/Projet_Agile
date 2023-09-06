@@ -8,7 +8,7 @@ public class Client extends Entite {
     private int x;
     private int y;
     private char c= 'C';
-    private ArrayList<Aliments> inventaire;
+    private ArrayList<Pizza> inventairePizza;
     private Pizza commande;
 
     public Client(int x, int y){
@@ -17,12 +17,17 @@ public class Client extends Entite {
         int index = random.nextInt(Pizza.values().length);
 
         this.commande = Pizza.values()[index];
+        this.inventairePizza = new ArrayList<Pizza>();
     }
 
     public Client(int x, int y, Pizza p){
         this(x, y);
         this.commande = p;
     } 
+
+    public ArrayList<Pizza> getInventairePizza() {
+        return inventairePizza;
+    }
 
     public char getC() {
         return c;
