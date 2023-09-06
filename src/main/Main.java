@@ -71,7 +71,9 @@ public class Main {
         
         String chaine;
         boolean transi = true;
-        while (transi) {
+        LocalTime begin = LocalTime.now();
+        LocalTime end = begin.plusMinutes(3);
+        while (transi && begin.isBefore(end)) {
             if (isNearClient(c, carte.getGrid())){
                 System.out.println();
                 System.out.println("Donner la commande du Client : " + client.getCommande());
