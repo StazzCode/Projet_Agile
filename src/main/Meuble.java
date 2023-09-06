@@ -1,12 +1,21 @@
 package main;
 
 import java.util.ArrayList;
+public class Meuble  extends Entite{
 
-    String name;
+    private char symbole;
 
-    public Meuble(boolean tr,String name){
-        super(tr);
-        this.name = name;
+    public Meuble(int x, int y , char c){
+        super(x,y);
+        this.symbole = c;
+    }
+
+    public int getX(){
+        return super.getX();
+    }
+
+    public int getY(){
+        return super.getY();
     }
 
     public ArrayList<Aliments> getInventaire(){
@@ -19,5 +28,11 @@ import java.util.ArrayList;
 
     public boolean isMeuble(){
         return true;
+    }
+
+
+
+    public char getSymbole() {
+        return symbole;
     }
 }

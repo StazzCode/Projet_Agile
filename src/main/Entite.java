@@ -42,8 +42,7 @@ public abstract class Entite {
         return this.inventaire;
     } 
 
-    public String getC() {
-        return c;
+
     public void addToInventaire(Aliments aliment){
         this.inventaire.add(aliment);
     }

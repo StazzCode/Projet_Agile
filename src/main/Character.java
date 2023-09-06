@@ -11,7 +11,7 @@ public class Character extends Entite{
  
     private int x;
     private int y;
-    private String c= "👨";
+    private char c= 'P';
     private ArrayList<Aliments> inventaire;
 
     public boolean isMeuble(){
@@ -40,7 +40,7 @@ public class Character extends Entite{
 
     
 
-    public String getC() {
+    public char getC() {
         return c;
     }
 

@@ -6,14 +6,14 @@ public class Client extends Entite {
     
     private int x;
     private int y;
-    private String c= "👩";
+    private char c= 'C';
     private ArrayList<Aliments> inventaire;
 
     public Client(int x, int y){
         super(x,y);
     }
 
-    public String getC() {
+    public char getC() {
         return c;
     }
 
