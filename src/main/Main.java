@@ -81,11 +81,6 @@ public class Main {
             chaine = sc.nextLine();
             chaine = chaine.toUpperCase();
 
-            if (isNearClient(c, carte.getGrid())){
-                System.out.println();
-                System.out.println("Donner la commande du Client : " + client.getCommande());
-            }
-
             System.out.println(CLEARSCREEN);
             begin = LocalTime.now();
             if(end.getMinute()-begin.getMinute() < 1){
@@ -130,7 +125,7 @@ public class Main {
                 transi = false;
                 System.out.println("Au revoir !");
             }
-            else if(chaine.equals(c.getE())){
+            else if(chaine.equals(c.getE()) && isNearClient(c, carte.getGrid())){
                 if(c.getInventairePizza().contains(client.getCommande())){
                     c.getInventairePizza().remove(client.getCommande());
                     client.getInventairePizza().add(client.getCommande());
