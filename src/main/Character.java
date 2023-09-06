@@ -103,8 +103,9 @@ public class Character extends Entite{
                         many = true;
                     }
                 }
+                res += " | ";
             }
-            res += " | ";
+            
         }
         return res;
     }

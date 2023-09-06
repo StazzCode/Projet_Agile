@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.lang.*;
 
 public class Main {
 
@@ -72,6 +73,32 @@ public class Main {
             if (isNearClient(c, carte.getGrid())){
                 System.out.print("Voulez vous donner une commande?\n");
             }
+            if(isNearMeuble(c, carte.getGrid()) != null && isNearMeuble(c, carte.getGrid()).getType() != null){
+                System.out.println("contenu du frigo : ");
+                for(int i = 0; i < isNearMeuble(c, carte.getGrid()).getIng().size(); i++){
+                    System.out.print(i + "." + isNearMeuble(c, carte.getGrid()).getIng().get(i) + " ");
+                }
+
+                System.out.println("quel est le chiffre de l'ingredient que tu souhaite?");
+
+                chaine = sc.nextLine();
+                chaine = chaine.toUpperCase();
+
+                try {
+                    if(Integer.parseInt(chaine) >= 0 && Integer.parseInt(chaine) <= isNearMeuble(c, carte.getGrid()).getIng().size()){
+                        Aliments alimChoice = isNearMeuble(c, carte.getGrid()).getIng().get(Integer.parseInt(chaine));
+                        System.out.println("Combien en veux tu?");
+                        chaine = sc.nextLine();
+                        chaine = chaine.toUpperCase();
+                        if(Integer.parseInt(chaine) >=0){
+                            for(int i = 0; i < Integer.parseInt(chaine); i++){
+                                c.addToInventaire(alimChoice);
+                            }
+                        }
+                    }
+                } catch (NumberFormatException e) {}
+            }
+
             chaine = sc.nextLine();
             chaine = chaine.toUpperCase();
             System.out.println(CLEARSCREEN);
@@ -116,7 +143,7 @@ public class Main {
                 System.out.println("Saisie invalide");
             }
             carte.displayCarte();
-            System.out.println("Ton inventaire :" + c.inventaireToString() + "");
+            System.out.println("Ton inventaire :" + c.inventaireToString()  + "");
             }
         }else if(choice == 2){
             demoAlimentsInventaire(c, sc);
@@ -124,8 +151,6 @@ public class Main {
     }
 
     public static void demoAlimentsInventaire(Character c,Scanner sc){
-
-        
 
         Client client = new Client(2, 2);
         
@@ -175,6 +200,22 @@ public class Main {
         int yC=c.getY();
         if(grid[yC-1][xC].isClient() || grid[yC+1][xC].isClient() || grid[yC][xC-1].isClient()||grid[yC][xC+1].isClient()){
             near=true;
+        }
+        return near;
+    }
+
+     public static Meuble isNearMeuble (Character c, Entite[][] grid){
+        Meuble near = null;
+        int xC=c.getX();
+        int yC=c.getY();
+        if(grid[yC-1][xC].isMeuble()){
+            near = (Meuble) grid[yC-1][xC];
+        }else if(grid[yC+1][xC].isMeuble()){
+            near = (Meuble) grid[yC+1][xC];
+        }else if(grid[yC][xC-1].isMeuble()){
+            near = (Meuble) grid[yC][xC-1];
+        }else if(grid[yC][xC+1].isMeuble()){
+            near = (Meuble) grid[yC][xC+1];
         }
         return near;
     }

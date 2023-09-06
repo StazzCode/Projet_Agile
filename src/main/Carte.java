@@ -40,8 +40,11 @@ public class Carte{
                 this.grid[i][j] = new Empty(i, j);
             }
         }
-        this.grid[2][2] = new Meuble(2, 2, 'F');
-        this.grid[2][3] = new Meuble(2, 3, 'H');
+        this.grid[1][1] = new Meuble(1, 1, 'F', "viande");
+        this.grid[1][3] = new Meuble(1, 3, 'F', "fromage");
+        this.grid[1][5] = new Meuble(1, 5, 'F', "sauce");
+         this.grid[1][7] = new Meuble(1, 7, 'F', "legume");
+        this.grid[1][11] = new Meuble(1, 11, 'H');
     }
 
     public void displayCarte(){
