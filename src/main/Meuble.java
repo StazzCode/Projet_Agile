@@ -1,7 +1,7 @@
 package main;
 public class Meuble extends Case{
 
-    String name;
+    private String name;
 
     public Meuble(boolean tr,String name){
         super(tr);

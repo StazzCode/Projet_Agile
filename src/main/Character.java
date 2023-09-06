@@ -11,7 +11,7 @@ public class Character extends Entite{
  
     private int x;
     private int y;
-    private char c= 'P';
+    private String c= "👨";
     private ArrayList<Aliments> inventaire;
 
     public Character(int x, int y, ArrayList<Aliments> inventaire){
@@ -38,7 +38,9 @@ public class Character extends Entite{
         this(x, y, null);
     }
 
-    public char getC() {
+    
+
+    public String getC() {
         return c;
     }
 

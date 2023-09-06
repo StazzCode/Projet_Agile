@@ -1,7 +1,7 @@
 package main;
 
 public enum Aliments { 
-
+//🔥 🍖 🍅  🍕  🦑 🍽️ 🥩 🥚 🍍
     CHORIZZO("Chorizo", 4, "meet"),
     MOZZARELLA("mozzarella", 2, "cheese"),
     PIMENTS_JALAPENOS("piments jalapenos", 1, "sauce"),
@@ -21,12 +21,12 @@ public enum Aliments {
         return name;
     }
 
-    public String getPrice() {
-        return name;
+    public int getPrice() {
+        return price;
     }
 
     public String getType() {
-        return name;
+        return type;
     }
 
     public void setName(String name){

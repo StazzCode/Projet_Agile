@@ -6,7 +6,7 @@ public class Entite {
     
     private int x;
     private int y;
-    private char c;
+    private String c;
     private ArrayList<Aliments> inventaire;
 
     public Entite(int x, int y, ArrayList<Aliments> inventaire) {
@@ -32,11 +32,11 @@ public class Entite {
         this.y = y;
     }
 
-    public void setC(char c) {
+    public void setC(String c) {
         this.c = c;
     }
 
-    public char getC() {
+    public String getC() {
         return c;
     }
 }

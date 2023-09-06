@@ -36,6 +36,7 @@ public class Main {
                 choix = 0;
             }
         }catch(NumberFormatException e){}
+        System.out.println(CLEARSCREEN);
         return choix;
     }
 

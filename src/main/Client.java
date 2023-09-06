@@ -6,7 +6,7 @@ public class Client extends Entite {
     
     private int x;
     private int y;
-    private char c= 'C';
+    private String c= "👩";
     private ArrayList<Aliments> inventaire;
 
     public Client(int x, int y, ArrayList<Aliments> inventaire){
@@ -17,7 +17,7 @@ public class Client extends Entite {
         this(x, y, null);
     }
 
-    public char getC() {
+    public String getC() {
         return c;
     }
 }
