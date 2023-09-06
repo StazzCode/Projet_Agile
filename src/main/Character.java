@@ -36,6 +36,7 @@ public class Character extends Entite{
     public Character(int x, int y){
         super(x, y);
         this.inventairePizza = new ArrayList<Pizza>();
+        this.inventaire = new ArrayList<Aliments>();
     }
 
     public String getZ() {
@@ -119,8 +120,9 @@ public class Character extends Entite{
                         many = true;
                     }
                 }
+                res += " | ";
             }
-            res += " | ";
+            
         }
         return res;
     }

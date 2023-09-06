@@ -40,8 +40,12 @@ public class Carte{
                 this.grid[i][j] = new Empty(i, j);
             }
         }
-        this.grid[2][2] = new Meuble(2, 2, 'F');
-        this.grid[2][3] = new Meuble(2, 3, 'H');
+        this.grid[1][1] = new Meuble(1, 1, 'F', "viande");
+        this.grid[1][3] = new Meuble(1, 3, 'F', "fromage");
+        this.grid[1][5] = new Meuble(1, 5, 'F', "sauce");
+        this.grid[1][7] = new Meuble(1, 7, 'F', "legume");
+        this.grid[1][9] = new Meuble(1, 7, 'F', "plant");
+         this.grid[1][15] = new Meuble(1, 7, 'H');
     }
 
     public void displayCarte(){
@@ -57,7 +61,20 @@ public class Carte{
                 
             }
             System.out.println();
+            
         }
+        System.out.println();
+        System.out.println("\n|---------------------------------------------------------------------|");
+            System.out.println("|Spicy Texas : - Boeauf , Chorizzo , Mozarella                        |");
+            System.out.println("|---------------------------------------------------------------------|");
+            System.out.println("|Original Bacon : - Bacon , Boeauf , Mozarella , Oignon               |");
+            System.out.println("|---------------------------------------------------------------------|");
+            System.out.println("|Margarita : - Mozarella , Basilic , Boeauf                           |");
+            System.out.println("|---------------------------------------------------------------------|");
+            System.out.println("|Extra Hot : - Piments , Poulet , Oignon , Chorizzo                   |");
+            System.out.println("|---------------------------------------------------------------------|");
+            System.out.println("|Special Papa : - Poulet , Bacon , Chorizzo , Basilic , Sauce Secrete |");
+            System.out.println("|---------------------------------------------------------------------|\n\n");
     }
 
     public ArrayList<Client> getClientsList() {
