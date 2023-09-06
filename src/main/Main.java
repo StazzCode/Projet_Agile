@@ -76,14 +76,19 @@ public class Main {
             }
             chaine = sc.nextLine();
             chaine = chaine.toUpperCase();
+
+            if (isNearClient(c, carte.getGrid())){
+                System.out.println();
+                System.out.println("Donner la commande du Client : " + client.getCommande());
+            }
+
             System.out.println(CLEARSCREEN);
             begin = LocalTime.now();
             if(end.getMinute()-begin.getMinute() < 1){
                 System.out.println(end.getSecond() - begin.getSecond()+" seconde(s) restante");
             }else{
                System.out.println(end.getMinute()-begin.getMinute()+" Minute(s) restante\n"); 
-            }
-            
+            }            
             if (chaine.equals(c.getZ())){
                 try{
                     c.moveUp(carte.getGrid());
