@@ -64,17 +64,17 @@ public class Carte{
             
         }
         System.out.println();
-        System.out.println("\n|---------------------------------------------------------------------|");
-            System.out.println("|Spicy Texas : - Boeauf , Chorizzo , Mozarella                        |");
-            System.out.println("|---------------------------------------------------------------------|");
-            System.out.println("|Original Bacon : - Bacon , Boeauf , Mozarella , Oignon               |");
-            System.out.println("|---------------------------------------------------------------------|");
-            System.out.println("|Margarita : - Mozarella , Basilic , Boeauf                           |");
-            System.out.println("|---------------------------------------------------------------------|");
-            System.out.println("|Extra Hot : - Piments , Poulet , Oignon , Chorizzo                   |");
-            System.out.println("|---------------------------------------------------------------------|");
-            System.out.println("|Special Papa : - Poulet , Bacon , Chorizzo , Basilic , Sauce Secrete |");
-            System.out.println("|---------------------------------------------------------------------|\n\n");
+        System.out.println("\n|-------------------------------------------------------------------------------------|");
+            System.out.println("|0. Spicy Texas : - Boeauf , Chorizzo , Mozarella $ score: 300                        |");
+            System.out.println("|-------------------------------------------------------------------------------------|");
+            System.out.println("|1. Original Bacon : - Bacon , Boeauf , Mozarella , Oignon $ score: 400               |");
+            System.out.println("|-------------------------------------------------------------------------------------|");
+            System.out.println("|2. Margarita : - Mozarella , Basilic , Boeauf $ score: 200                           |");
+            System.out.println("|-------------------------------------------------------------------------------------|");
+            System.out.println("|4. Extra Hot : - Piments , Poulet , Oignon , Chorizzo $ score: 500                   |");
+            System.out.println("|-------------------------------------------------------------------------------------|");
+            System.out.println("|5. Special Papa : - Poulet , Bacon , Chorizzo , Basilic , Sauce Secrete $ score: 800 |");
+            System.out.println("|-------------------------------------------------------------------------------------|\n\n");
     }
 
     public ArrayList<Client> getClientsList() {

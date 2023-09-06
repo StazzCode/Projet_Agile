@@ -59,4 +59,13 @@ public class Meuble extends Entite{
         }
         return mesIngredient;
     }
+
+    public ArrayList<Pizza> getPiz(ArrayList<Aliments> inventaire){   
+        ArrayList<Pizza> lesPizzas = new ArrayList<Pizza>();
+        Pizza[] pizzas = Pizza.values(); 
+        for (Pizza piz : pizzas) {
+                lesPizzas.add(piz);
+        }
+        return lesPizzas;
+    }
 }

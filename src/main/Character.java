@@ -30,7 +30,11 @@ public class Character extends Entite{
     }
 
     public ArrayList<Pizza> getInventairePizza() {
-        return inventairePizza;
+        return this.inventairePizza;
+    }
+
+    public void addToInventaire(Aliments aliment){
+        this.inventaire.add(aliment);
     }
 
     public Character(int x, int y){
@@ -56,7 +60,7 @@ public class Character extends Entite{
     }
 
     public ArrayList<Aliments> getInventaire() {
-        return inventaire;
+        return this.inventaire;
     }
 
     public char getC() {
@@ -125,5 +129,14 @@ public class Character extends Entite{
             
         }
         return res;
+    }
+
+    public void addToInventairePizza(Pizza pizza){
+        if(pizza.verifPizza(this.inventaire)){
+            this.inventairePizza.add(pizza);
+            this.inventaire.clear();
+        }else{
+            System.out.println("il te manque des ingredinent MAMAAAAA !! ");
+        }
     }
 }

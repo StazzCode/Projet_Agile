@@ -60,24 +60,28 @@ public class Main {
         int x4 = x+2;
         Character c = new Character(x, y);
         if(choice == 1){      
-        
-        Client client = new Client(x,y2,Pizza.SPICY_TEXAS);
-        Client cliente = new Client(x3,y2,Pizza.ORIGINAL_BACON);
-        Client clint = new Client(x4,y2);
-
-        c.getInventairePizza().add(Pizza.SPICY_TEXAS); // Ajoute un pizza dans l'inventaire à Pizza du joueur.
 
         Carte carte = new Carte(c);
 
-        carte.getClientsList().add(client);
-        carte.getClientsList().add(cliente);
-        carte.getClientsList().add(clint);
+        carte.getClientsList().add(new Client(2,6));
+        carte.getClientsList().add(new Client(5,6));
+        carte.getClientsList().add(new Client(8,6));
+        carte.getClientsList().add(new Client(11,6));
+        carte.getClientsList().add(new Client(14,6));
+        carte.getClientsList().add(new Client(17,6));
+
+        carte.getClientsList().add(new Client(3,8));
+        carte.getClientsList().add(new Client(6,8));
+        carte.getClientsList().add(new Client(9,8));
+        carte.getClientsList().add(new Client(12,8));
+        carte.getClientsList().add(new Client(15,8));
 
         carte.initCarte();
         carte.getGrid()[c.getY()][c.getX()] = c;
-        carte.getGrid()[client.getY()][client.getX()] = client;
-        carte.getGrid()[cliente.getY()][cliente.getX()] = cliente;
-        carte.getGrid()[clint.getY()][clint.getX()] = clint;
+
+        for(int i = 0; i < carte.getClientsList().size(); i++){
+            carte.getGrid()[carte.getClientsList().get(i).getY()][carte.getClientsList().get(i).getX()] = carte.getClientsList().get(i);
+        }
         carte.displayCarte();
         
         String chaine;
@@ -86,23 +90,8 @@ public class Main {
         LocalTime end = begin.plusMinutes(3);
         //LocalTime end = begin.plusSeconds(3);
         while (transi && begin.isBefore(end)) {
-            if (isNearClient(c, carte.getGrid())){
-                /*int xNC = whoIsClient(c, carte.getGrid()).getX();
-                int yNC = whoIsClient(c, carte.getGrid()).getY();
-                System.out.println(xNC + ", " + yNC);
-                Pizza pNC = carte.getGrid()[yNC][xNC].getInventairePizza().get(0); */
-                Client clienta = whoIsClient(c,carte.getGrid());
-                if(clienta.getX() ==client.getX() && clienta.getY()== client.getY()){
-                    System.out.println();
-                    System.out.println("Donner la commande du Client : " + client.getCommande());
-                }else if(clienta.getX() ==cliente.getX() && clienta.getY()== cliente.getY()){
-                    System.out.println();
-                    System.out.println("Donner la commande du Client : " + cliente.getCommande());
-                }else{
-                   System.out.println();
-                System.out.println("Donner la commande du Client : " + clint.getCommande()); 
-                }
-                
+            if (isNearClient(c, carte.getGrid()) != null){
+                System.out.println("Donner la commande du Client : " + isNearClient(c, carte.getGrid()).getCommande());
             }
             if(isNearMeuble(c, carte.getGrid()) != null && isNearMeuble(c, carte.getGrid()).getType() != null){
                 System.out.println("contenu du frigo : ");
@@ -129,7 +118,20 @@ public class Main {
                     }
                 } catch (NumberFormatException e) {}
             }
+            if(isNearMeuble(c, carte.getGrid()) != null && isNearMeuble(c, carte.getGrid()).getType() == null){
+                if(isNearMeuble(c, carte.getGrid()).getPiz(c.getInventaire()).size() > 0){
+                    System.out.println("Quel Pizza souhaite tu fabriquer:" + isNearMeuble(c, carte.getGrid()).getPiz(c.getInventaire()).size());
 
+                    chaine = sc.nextLine();
+                    chaine = chaine.toUpperCase();
+                    try{
+                        c.addToInventairePizza(isNearMeuble(c, carte.getGrid()).getPiz(c.getInventaire()).get(Integer.parseInt(chaine)));
+                        
+                    }catch (NumberFormatException e) {}
+                }else{
+                     System.out.println("Vous n'avez pas assez d'ingredients");
+                }
+            }
             chaine = sc.nextLine();
             chaine = chaine.toUpperCase();
 
@@ -181,12 +183,14 @@ public class Main {
                 System.out.println();
                 System.out.println("Au revoir !");
             }
-            else if(chaine.equals(c.getE()) && isNearClient(c, carte.getGrid())){
-                if(c.getInventairePizza().contains(client.getCommande())){
-                    c.getInventairePizza().remove(client.getCommande());
-                    client.getInventairePizza().add(client.getCommande());
+            else if(chaine.equals(c.getE()) && isNearClient(c, carte.getGrid()) != null){
+                System.out.println(c.getInventairePizza() + " " + isNearClient(c, carte.getGrid()).getCommande());
+                if(c.getInventairePizza().contains(isNearClient(c, carte.getGrid()).getCommande())){
+                    c.getInventairePizza().remove(isNearClient(c, carte.getGrid()).getCommande());
+                    isNearClient(c, carte.getGrid()).getInventairePizza().add(isNearClient(c, carte.getGrid()).getCommande());
 
-                    score += client.getCommande().getScore();
+                    score += isNearClient(c, carte.getGrid()).getCommande().getScore();
+                    isNearClient(c, carte.getGrid()).setCommande();
 
                     System.out.println("Bravo le Client est satisfait !");
                 }else{
@@ -204,7 +208,9 @@ public class Main {
                 System.out.println("Au revoir !");
             }
             carte.displayCarte();
-            System.out.println("Ton inventaire :" + c.inventaireToString()  + "");
+            System.out.println("Tes ingredients :" + c.inventaireToString()  + "");
+            System.out.println("Tes Pizza :" + c.getInventairePizza()  + "");
+            System.out.println("Ton Score :" + score  + "");
             }
             
         }else if(choice == 2){
@@ -256,12 +262,18 @@ public class Main {
     
     
 
-    public static boolean isNearClient (Character c, Entite[][] grid){
-        boolean near = false;
+    public static Client isNearClient (Character c, Entite[][] grid){
+        Client near = null;
         int xC=c.getX();
         int yC=c.getY();
-        if(grid[yC-1][xC].isClient() || grid[yC+1][xC].isClient() || grid[yC][xC-1].isClient()||grid[yC][xC+1].isClient()){
-            near=true;
+        if(grid[yC-1][xC].isClient()){
+            near = (Client) grid[yC-1][xC];
+        }else if(grid[yC+1][xC].isClient()){
+            near = (Client) grid[yC+1][xC];
+        }else if(grid[yC][xC-1].isClient()){
+            near = (Client) grid[yC][xC-1];
+        }else if(grid[yC][xC+1].isClient()){
+            near = (Client) grid[yC][xC+1];
         }
         return near;
     }

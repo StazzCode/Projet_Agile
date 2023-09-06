@@ -6,7 +6,7 @@ public enum Pizza{
 
     SPICY_TEXAS("spicy texas", Aliments.BOEAUF, Aliments.CHORIZZO, Aliments.MOZZARELLA, null, null, 300),
     ORIGINAL_BACON("original bacon", Aliments.BACON, Aliments.BOEAUF, Aliments.MOZZARELLA, Aliments.OIGNONS, null, 400),
-    MARGARITa("margarita", Aliments.MOZZARELLA , Aliments.BASILIC , Aliments.BOEAUF,null,null, 200),
+    MARGARITA("margarita", Aliments.MOZZARELLA , Aliments.BASILIC , Aliments.BOEAUF,null,null, 200),
     EXTRA_HOT("extra hot",Aliments.PIMENTS_JALAPENOS , Aliments.POULET , Aliments.OIGNONS , Aliments.CHORIZZO , null, 500),
     SPECIAL_PAPA("special papa",Aliments.POULET, Aliments.BACON , Aliments.CHORIZZO , Aliments.BASILIC , Aliments.SAUCE_SECRETE, 800);
 
@@ -44,11 +44,6 @@ public enum Pizza{
                 isGood = false;
             }
             ingredients.add(this.AlimentsList.get(i));
-        }
-        if(isGood == true){
-            for(int i =0; i < ingredients.size(); i++){
-                pizzaPerso.remove(ingredients.get(i));
-            }
         }
         return isGood;
     }

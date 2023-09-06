@@ -20,11 +20,6 @@ public class Client extends Entite {
         this.inventairePizza = new ArrayList<Pizza>();
     }
 
-    public Client(int x, int y, Pizza p){
-        this(x, y);
-        this.commande = p;
-    } 
-
     public ArrayList<Pizza> getInventairePizza() {
         return inventairePizza;
     }
@@ -35,6 +30,13 @@ public class Client extends Entite {
 
     public Pizza getCommande(){
         return this.commande;
+    }
+
+    public void setCommande(){
+        Random random = new Random();
+        int index = random.nextInt(Pizza.values().length);
+
+        this.commande = Pizza.values()[index];
     }
 
     public boolean isMeuble(){

@@ -22,7 +22,7 @@ public abstract class Entite {
     }
 
     public ArrayList<Pizza> getInventairePizza() {
-        return inventairePizza;
+        return this.inventairePizza;
     }
 
     public int getY() {
@@ -53,5 +53,24 @@ public abstract class Entite {
 
     public void addToInventaire(Aliments aliment){
         this.inventaire.add(aliment);
+    }
+
+    public void addToInventairePizza(Pizza pizza){
+        this.inventairePizza.add(pizza);
+        if(pizza.verifPizza(this.inventaire)){
+            this.inventairePizza.add(pizza);
+            this.inventaire.clear();
+        }
+    }
+
+    public ArrayList<Pizza> getPiz(ArrayList<Aliments> inventaire){
+        ArrayList<Pizza> lesPizzas = new ArrayList<Pizza>();
+        Pizza[] pizzas = Pizza.values();
+        for (Pizza piz : pizzas) {
+            if(piz.verifPizza(inventaire)){
+                lesPizzas.add(piz);
+            }
+        }
+        return lesPizzas;
     }
 }
