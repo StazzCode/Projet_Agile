@@ -14,7 +14,7 @@ public class Main {
         String result = "";
         System.out.println(CLEARSCREEN);
         try{
-            FileReader file = new FileReader("./res/mainMenuText.txt");
+            FileReader file = new FileReader("res/mainMenuText.txt");
             Scanner sc1 = new Scanner(file);
             while(sc1.hasNextLine()){
                 result = result + sc1.nextLine()+"\n";
@@ -72,6 +72,11 @@ public class Main {
             chaine = sc.nextLine();
             chaine = chaine.toUpperCase();
             System.out.println(CLEARSCREEN);
+
+            if (isNearClient(c, carte.getGrid())){
+                
+            }
+
             if (chaine.equals(c.getZ())){
                 try{
                     c.moveUp(carte.getGrid());
@@ -86,7 +91,6 @@ public class Main {
                     carte.getGrid()[c.getY() - 1][c.getX()] = new Empty(c.getY() - 1, c.getX()) ;
                     carte.getGrid()[c.getY()][c.getX()] = c ;
                 } catch (InvalidDeplacement e) {
-                    // TODO: handle exception
                     System.out.println("Déplacement vers le bas invalide");
                 }
             }else if (chaine.equals(c.getQ())){
@@ -95,7 +99,6 @@ public class Main {
                     carte.getGrid()[c.getY()][c.getX() + 1] = new Empty(c.getY(), c.getX() + 1) ;
                     carte.getGrid()[c.getY()][c.getX()] = c ;
                 } catch (InvalidDeplacement e) {
-                    // TODO: handle exception
                     System.out.println("Déplacement vers la gauche invalide");
                 }
             }else if (chaine.equals(c.getD())){
@@ -105,7 +108,6 @@ public class Main {
                     carte.getGrid()[c.getY()][c.getX()] = c ;
                     
                 } catch (InvalidDeplacement e) {
-                    // TODO: handle exception
                     System.out.println("Déplacement vers la droite invalide");
                 }
             }else if(chaine.equals("X")){
@@ -126,14 +128,14 @@ public class Main {
             Pizza pizz1 = Pizza.SPICY_TEXAS;
             Pizza pizz2 = Pizza.SPICY_TEXAS;
 
-            c.addToInventaire(Aliments.BOEAUF);
-            c.addToInventaire(Aliments.MOZZARELLA);
-            c.addToInventaire(Aliments.CHORIZZO);
-            c.addToInventaire(Aliments.BOEAUF);
+        c.addToInventaire(Aliments.BOEAUF);
+        c.addToInventaire(Aliments.MOZZARELLA);
+        c.addToInventaire(Aliments.CHORIZZO);
+        c.addToInventaire(Aliments.BOEAUF);
 
-            System.out.println();
-            System.out.println("Ton inventaire :" + c.inventaireToString() + "");
-            System.out.println("Donner une pizza : " + pizz1.getName() + " | Appuyez sur Entrer");
+        System.out.println();
+        System.out.println("Ton inventaire :" + c.inventaireToString() + "");
+        System.out.println("Donner une pizza : " + pizz1.getName() + " | Appuyez sur Entrer");
 
             String mChaine;
             boolean action = false;
@@ -162,8 +164,27 @@ public class Main {
                 }
             }
             System.out.println();
-            } 
-    }
+        } 
+    
+    
 
+    public static boolean isNearClient (Character c, Entite[][] grid){
+        boolean near = false;
+        int xC;
+        int yC;
+
+        for (int y = c.getY()-1; y <= c.getY()+1; y++) {
+            for (int x = c.getX()-1; x <= c.getX()+1; x++){
+                if (grid[y][x] != null){
+                    xC = x;
+                    yC = y;
+                    near = true;
+                }
+            }
+        }
+
+        return near;
+    }
+}
     
 
