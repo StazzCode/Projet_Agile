@@ -1,6 +1,7 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Client extends Entite {
     
@@ -12,6 +13,10 @@ public class Client extends Entite {
 
     public Client(int x, int y){
         super(x,y);
+        Random random = new Random();
+        int index = random.nextInt(Pizza.values().length);
+
+        this.commande = Pizza.values()[index];
     }
 
     public Client(int x, int y, Pizza p){
@@ -23,12 +28,18 @@ public class Client extends Entite {
         return c;
     }
 
+    public Pizza getCommande(){
+        return this.commande;
+    }
+
     public boolean isMeuble(){
         return false;
     }
+
     public String toStringCommande(){
         return commande.getName();
     }
+    
     public boolean isClient(){
         return true;
     }

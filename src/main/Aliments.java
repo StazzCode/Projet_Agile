@@ -5,7 +5,10 @@ public enum Aliments {
     CHORIZZO("Chorizo", 4, "meet"),
     MOZZARELLA("mozzarella", 2, "cheese"),
     PIMENTS_JALAPENOS("piments jalapenos", 1, "sauce"),
-    BOEAUF("boeauf", 5, "meet");
+    BOEAUF("boeauf", 5, "meet"),
+    BACON("bacon", 3, "meet"),
+    POULET("poulet", 4, "meet"),
+    OIGNONS("oignons", 3, "meet");
     
     private String name;
     private int price;
