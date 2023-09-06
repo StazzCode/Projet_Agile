@@ -16,4 +16,8 @@ public class Client extends Entite {
     public char getC() {
         return c;
     }
+
+    public boolean isMeuble(){
+        return false;
+    }
 }

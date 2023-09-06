@@ -14,6 +14,10 @@ public class Character extends Entite{
     private char c= 'P';
     private ArrayList<Aliments> inventaire;
 
+    public boolean isMeuble(){
+        return false;
+    }
+
     public Character(int x, int y){
         super(x, y);
     }

@@ -112,7 +112,12 @@ public class Main {
             }
             carte.displayCarte();
 
-            Pizza pizz1 = Pizza.SPICY_TEXAS;
+            }
+        }
+    }
+
+    public static void demoAlimentsInventaire(Character c,Scanner sc){
+        Pizza pizz1 = Pizza.SPICY_TEXAS;
             Pizza pizz2 = Pizza.SPICY_TEXAS;
 
             c.addToInventaire(Aliments.BOEAUF);
@@ -152,8 +157,7 @@ public class Main {
             }
             System.out.println();
             } 
-        }
     }
-}
+
     
 

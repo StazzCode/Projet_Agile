@@ -1,16 +1,33 @@
 package main;
-public class Meuble extends Case{
 
-    String name;
+import java.util.ArrayList;
 
-    public Meuble(boolean tr,String name){
-        super(tr);
-        this.name = name;
-    }
-
-    public String getName(){
-        return this.name;
-    }
-
+public class Meuble extends Entite{
     
+    private char symbole;
+
+    public Meuble(int x,int y,char c){
+        super(x, y);
+        this.symbole = c;
+    }
+
+    public int getX(){
+        return super.getX();
+    }
+
+    public int getY(){
+        return super.getY();
+    }
+
+    public ArrayList<Aliments> getInventaire(){
+        return super.getInventaire();
+    }
+
+    public char getC(){
+        return this.symbole;
+    }
+
+    public boolean isMeuble(){
+        return true;
+    }
 }

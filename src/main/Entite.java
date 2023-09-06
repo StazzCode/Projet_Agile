@@ -2,17 +2,15 @@ package main;
 
 import java.util.ArrayList;
 
-public class Entite {
+public abstract class Entite {
     
     private int x;
     private int y;
-    private char c;
     private ArrayList<Aliments> inventaire;
 
     public Entite(int x, int y) {
         this.x = x;
         this.y = y;
-        //this.c = c;
         this.inventaire = new ArrayList<Aliments>();
     }
 
@@ -32,13 +30,9 @@ public class Entite {
         this.y = y;
     }
 
-    public void setC(char c) {
-        this.c = c;
-    }
+    public abstract char getC();
 
-    public char getC() {
-        return c;
-    }
+    public abstract boolean isMeuble();
 
     public ArrayList<Aliments> getInventaire(){
         return this.inventaire;
