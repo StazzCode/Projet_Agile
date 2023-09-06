@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 public enum Pizza{
 
-    SPICY_TEXAS("spicy texas", Aliments.BOEAUF, Aliments.CHORIZZO, Aliments.MOZZARELLA, null, null);
+    SPICY_TEXAS("spicy texas", Aliments.BOEAUF, Aliments.CHORIZZO, Aliments.MOZZARELLA, null, null),
+    ORIGINAL_BACON("original bacon", Aliments.BACON, Aliments.BOEAUF, Aliments.MOZZARELLA, Aliments.OIGNONS, null);
 
     private String name;
     private ArrayList<Aliments> AlimentsList = new ArrayList<Aliments>();

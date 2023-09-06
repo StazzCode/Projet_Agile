@@ -50,30 +50,39 @@ public class Character extends Entite{
 
     public void moveUp(Entite[][] grid) throws InvalidDeplacement{
         if(this.getY()-1<=0) throw new InvalidDeplacement("Déplacement vers le haut invalide");
-        if(grid[this.getY()-1][this.getX()].isMeuble()) throw new InvalidDeplacement("Attention au Meuble");
-        if(grid[this.getY()-1][this.getX()].isClient()) throw new InvalidDeplacement("Attention au client");
+        if(grid[this.getY()-1][this.getX()] != null){
+            if(grid[this.getY()-1][this.getX()].isMeuble()) throw new InvalidDeplacement("Attention au Meuble");
+            if(grid[this.getY()-1][this.getX()].isClient()) throw new InvalidDeplacement("Attention au client");
+        }
+            
         this.setY(this.getY()-1);
     }
 
 
     public void moveDown(Entite[][] grid)throws InvalidDeplacement{
         if(this.getY()+1>=9) throw new InvalidDeplacement("Déplacement vers le bas invalide");
-        if(grid[this.getY()+1][this.getX()].isMeuble()) throw new InvalidDeplacement("Attention au Meuble");
-        if(grid[this.getY()+1][this.getX()].isClient()) throw new InvalidDeplacement("Attention au client");
+        if(grid[this.getY()-1][this.getX()] != null){
+            if(grid[this.getY()+1][this.getX()].isMeuble()) throw new InvalidDeplacement("Attention au Meuble");
+            if(grid[this.getY()+1][this.getX()].isClient()) throw new InvalidDeplacement("Attention au client");
+        }
         this.setY(this.getY()+1);
     }
 
     public void moveLeft(Entite[][] grid)throws InvalidDeplacement{
         if(this.getX()-1<=0) throw new InvalidDeplacement("Déplacement vers la gauche invalide");
-        if(grid[this.getY()][this.getX()-1].isMeuble()) throw new InvalidDeplacement("Attention au Meuble");
-        if(grid[this.getY()][this.getX()-1].isClient()) throw new InvalidDeplacement("Attention au client");
+        if(grid[this.getY()-1][this.getX()] != null){
+            if(grid[this.getY()][this.getX()-1].isMeuble()) throw new InvalidDeplacement("Attention au Meuble");
+            if(grid[this.getY()][this.getX()-1].isClient()) throw new InvalidDeplacement("Attention au client");
+        }
         this.setX(this.getX()-1);
     }
 
     public void moveRight(Entite[][] grid)throws InvalidDeplacement{
         if(this.getX()+1>=19) throw new InvalidDeplacement("Déplacement vers la droite invalide");
-        if(grid[this.getY()][this.getX()+1].isMeuble()) throw new InvalidDeplacement("Attention au Meuble");
-        if(grid[this.getY()][this.getX()+1].isClient()) throw new InvalidDeplacement("Attention au client");
+        if(grid[this.getY()-1][this.getX()] != null){
+            if(grid[this.getY()][this.getX()+1].isMeuble()) throw new InvalidDeplacement("Attention au Meuble");
+            if(grid[this.getY()][this.getX()+1].isClient()) throw new InvalidDeplacement("Attention au client");
+        }
         this.setX(this.getX()+1);
     }
 

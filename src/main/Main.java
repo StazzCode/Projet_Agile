@@ -97,7 +97,7 @@ public class Main {
                 try {
                     c.moveLeft(carte.getGrid());
                     carte.getGrid()[c.getY()][c.getX() + 1] = new Empty(c.getY(), c.getX() + 1) ;
-                    carte.getGrid()[c.getY()][c.getX()] = c ;
+                    carte.getGrid()[c.getY()][c.getX()] = c;
                 } catch (InvalidDeplacement e) {
                     System.out.println("Déplacement vers la gauche invalide");
                 }
@@ -117,7 +117,6 @@ public class Main {
                 System.out.println("Saisie invalide");
             }
             carte.displayCarte();
-
             }
         }else if(choice == 2){
             demoAlimentsInventaire(c, sc);
@@ -125,23 +124,23 @@ public class Main {
     }
 
     public static void demoAlimentsInventaire(Character c,Scanner sc){
-            Pizza pizz1 = Pizza.SPICY_TEXAS;
-            Pizza pizz2 = Pizza.SPICY_TEXAS;
 
         c.addToInventaire(Aliments.BOEAUF);
         c.addToInventaire(Aliments.MOZZARELLA);
         c.addToInventaire(Aliments.CHORIZZO);
         c.addToInventaire(Aliments.BOEAUF);
 
+        Client client = new Client(2, 2);
+
         System.out.println();
         System.out.println("Ton inventaire :" + c.inventaireToString() + "");
-        System.out.println("Donner une pizza : " + pizz1.getName() + " | Appuyez sur Entrer");
+        System.out.println("Donner une pizza : " + client.getCommande() + " | Appuyez sur Entrer");
 
             String mChaine;
             boolean action = false;
             while (!action) {
                 mChaine = sc.nextLine();
-                if(pizz1.verifPizza(c.getInventaire())){ 
+                if(client.getCommande().verifPizza(c.getInventaire())){ 
                     System.out.println("Bravo votre client est satisfait !");
                     action = true;
                 }else{
@@ -151,13 +150,13 @@ public class Main {
 
             System.out.println();
             System.out.println("Ton inventaire :" + c.inventaireToString() + "");
-            System.out.println("Donner une pizza : " + pizz2.getName() + " | Appuyez sur Entrer");
+            System.out.println("Donner une pizza : " + client.getCommande().getName() + " | Appuyez sur Entrer");
 
             
             action = false;
             while (!action) {
                 mChaine = sc.nextLine();
-                if(pizz2.verifPizza(c.getInventaire())){
+                if(client.getCommande().verifPizza(c.getInventaire())){
                     action = true;
                 }else{
                     System.out.println("Vous n'avez pas les ingredients necessaire");
