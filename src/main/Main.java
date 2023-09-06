@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.time.LocalTime;
 import java.util.Scanner;
+import java.lang.*;
 
 public class Main {
 
@@ -78,6 +79,32 @@ public class Main {
                 System.out.println();
                 System.out.println("Donner la commande du Client : " + client.getCommande());
             }
+            if(isNearMeuble(c, carte.getGrid()) != null && isNearMeuble(c, carte.getGrid()).getType() != null){
+                System.out.println("contenu du frigo : ");
+                for(int i = 0; i < isNearMeuble(c, carte.getGrid()).getIng().size(); i++){
+                    System.out.print(i + "." + isNearMeuble(c, carte.getGrid()).getIng().get(i) + " ");
+                }
+
+                System.out.println("quel est le chiffre de l'ingredient que tu souhaite?");
+
+                chaine = sc.nextLine();
+                chaine = chaine.toUpperCase();
+
+                try {
+                    if(Integer.parseInt(chaine) >= 0 && Integer.parseInt(chaine) <= isNearMeuble(c, carte.getGrid()).getIng().size()){
+                        Aliments alimChoice = isNearMeuble(c, carte.getGrid()).getIng().get(Integer.parseInt(chaine));
+                        System.out.println("Combien en veux tu?");
+                        chaine = sc.nextLine();
+                        chaine = chaine.toUpperCase();
+                        if(Integer.parseInt(chaine) >=0){
+                            for(int i = 0; i < Integer.parseInt(chaine); i++){
+                                c.addToInventaire(alimChoice);
+                            }
+                        }
+                    }
+                } catch (NumberFormatException e) {}
+            }
+
             chaine = sc.nextLine();
             chaine = chaine.toUpperCase();
 
@@ -92,7 +119,7 @@ public class Main {
                 try{
                     c.moveUp(carte.getGrid());
                     carte.getGrid()[c.getY() + 1][c.getX()] = new Empty(c.getY() + 1, c.getX()) ;
-                    carte.getGrid()[c.getY()][c.getX()] = c ;
+                    carte.getGrid()[c.getY()][c.getX()] = c;
                 }catch(InvalidDeplacement e){
                     System.out.println("Déplacement vers le haut invalide");
                 }
@@ -116,8 +143,7 @@ public class Main {
                 try {
                     c.moveRight(carte.getGrid());
                     carte.getGrid()[c.getY()][c.getX() - 1] = new Empty(c.getY(), c.getX() - 1) ;
-                    carte.getGrid()[c.getY()][c.getX()] = c ;
-                    
+                    carte.getGrid()[c.getY()][c.getX()] = c;
                 } catch (InvalidDeplacement e) {
                     System.out.println("Déplacement vers la droite invalide");
                 }
@@ -137,6 +163,7 @@ public class Main {
                 System.out.println("Saisie invalide");
             }
             carte.displayCarte();
+            System.out.println("Ton inventaire :" + c.inventaireToString()  + "");
             }
         }else if(choice == 2){
             demoAlimentsInventaire(c, sc);
@@ -145,12 +172,12 @@ public class Main {
 
     public static void demoAlimentsInventaire(Character c,Scanner sc){
 
+        Client client = new Client(2, 2);
+        
         c.addToInventaire(Aliments.BOEAUF);
         c.addToInventaire(Aliments.MOZZARELLA);
         c.addToInventaire(Aliments.CHORIZZO);
         c.addToInventaire(Aliments.BOEAUF);
-
-        Client client = new Client(2, 2);
 
         System.out.println();
         System.out.println("Ton inventaire :" + c.inventaireToString() + "");
@@ -194,7 +221,22 @@ public class Main {
         if(grid[yC-1][xC].isClient() || grid[yC+1][xC].isClient() || grid[yC][xC-1].isClient()||grid[yC][xC+1].isClient()){
             near=true;
         }
+        return near;
+    }
 
+     public static Meuble isNearMeuble (Character c, Entite[][] grid){
+        Meuble near = null;
+        int xC=c.getX();
+        int yC=c.getY();
+        if(grid[yC-1][xC].isMeuble()){
+            near = (Meuble) grid[yC-1][xC];
+        }else if(grid[yC+1][xC].isMeuble()){
+            near = (Meuble) grid[yC+1][xC];
+        }else if(grid[yC][xC-1].isMeuble()){
+            near = (Meuble) grid[yC][xC-1];
+        }else if(grid[yC][xC+1].isMeuble()){
+            near = (Meuble) grid[yC][xC+1];
+        }
         return near;
     }
 

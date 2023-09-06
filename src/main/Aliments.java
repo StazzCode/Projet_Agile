@@ -2,13 +2,13 @@ package main;
 
 public enum Aliments { 
 //🔥 🍖 🍅  🍕  🦑 🍽️ 🥩 🥚 🍍
-    CHORIZZO("Chorizo", 4, "meet"),
-    MOZZARELLA("mozzarella", 2, "cheese"),
+    CHORIZZO("Chorizo", 4, "viande"),
+    MOZZARELLA("mozzarella", 2, "fromage"),
     PIMENTS_JALAPENOS("piments jalapenos", 1, "sauce"),
-    BOEAUF("boeauf", 5, "meet"),
-    BACON("bacon", 3, "meet"),
-    POULET("poulet", 4, "meet"),
-    OIGNONS("oignons", 3, "meet"),
+    BOEAUF("boeauf", 5, "viande"),
+    BACON("bacon", 3, "viande"),
+    POULET("poulet", 4, "viande"),
+    OIGNONS("oignons", 3, "legume"),
     BASILIC("basilic",1,"plant"),
     SAUCE_SECRETE("sauce secrete",10,"sauce");
     
