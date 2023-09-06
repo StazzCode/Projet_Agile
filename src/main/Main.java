@@ -49,12 +49,11 @@ public class Main {
         while(choice == 0){
             choice = afficherMenuPrincipal() ;
         }
-        if(choice == 1){
-            int x = 9;
+        int x = 9;
         int y = 4;
         int y2 = y + 1;
-
         Character c = new Character(x, y);
+        if(choice == 1){      
         
         Client client = new Client(x,y2);
         Carte carte = new Carte(c);
@@ -70,6 +69,7 @@ public class Main {
         boolean transi = true;
         while (transi) {
             chaine = sc.nextLine();
+            chaine = chaine.toUpperCase();
             System.out.println(CLEARSCREEN);
             if (chaine.equals(c.getZ())){
                 try{
@@ -107,12 +107,17 @@ public class Main {
                     // TODO: handle exception
                     System.out.println("Déplacement vers la droite invalide");
                 }
-            }else{
+            }else if(chaine.equals("X")){
                 transi = false;
+                System.out.println("Au revoir !");
+            }else{
+                System.out.println("Saisie invalide");
             }
             carte.displayCarte();
 
             }
+        }else if(choice == 2){
+            demoAlimentsInventaire(c, sc);
         }
     }
 
