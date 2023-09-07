@@ -69,15 +69,15 @@ public class Carte{
         }
         System.out.println();
         System.out.println("\n┌───────────────────────────────────────────────────────────────────────────────────┐");
-            System.out.println("│Spicy Texas : - Boeauf , Chorizzo , Mozarella                        $ score : 300 │");
+            System.out.println("│Spicy Texas : - Boeuf , Chorizo , Mozzarella                         $ score : 300 │");
             System.out.println("├───────────────────────────────────────────────────────────────────────────────────┤");
-            System.out.println("│Original Bacon : - Bacon , Boeauf , Mozarella , Oignon               $ score : 400 │");
+            System.out.println("│Original Bacon : - Bacon , Boeuf , Mozzarella , Oignon               $ score : 400 │");
             System.out.println("├───────────────────────────────────────────────────────────────────────────────────┤");
-            System.out.println("│Margarita : - Mozarella , Basilic , Boeauf                           $ score : 200 │");
+            System.out.println("│Margarita : - Mozzarella , Basilic , Boeuf                           $ score : 200 │");
             System.out.println("├───────────────────────────────────────────────────────────────────────────────────┤");
-            System.out.println("│Extra Hot : - Piments , Poulet , Oignon , Chorizzo                   $ score : 500 │");
+            System.out.println("│Extra Hot : - Piments , Poulet , Oignon , Chorizo                    $ score : 500 │");
             System.out.println("├───────────────────────────────────────────────────────────────────────────────────┤");
-            System.out.println("│Special Papa : - Poulet , Bacon , Chorizzo , Basilic , Sauce Secrete $ score : 800 │");
+            System.out.println("│Special Papa : - Poulet , Bacon , Chorizo , Basilic , Sauce Secrete  $ score : 800 │");
             System.out.println("└───────────────────────────────────────────────────────────────────────────────────┘\n\n");
     }
 

@@ -3,14 +3,14 @@ package main;
 public enum Aliments { 
 //🔥 🍖 🍅  🍕  🦑 🍽️ 🥩 🥚 🍍
     CHORIZZO("Chorizo", 4, "viande"),
-    MOZZARELLA("mozzarella", 2, "fromage"),
-    PIMENTS_JALAPENOS("piments jalapenos", 1, "sauce"),
-    BOEAUF("boeauf", 5, "viande"),
-    BACON("bacon", 3, "viande"),
-    POULET("poulet", 4, "viande"),
-    OIGNONS("oignons", 3, "legume"),
-    BASILIC("basilic",1,"plant"),
-    SAUCE_SECRETE("sauce secrete",10,"sauce");
+    MOZZARELLA("Mozzarella", 2, "fromage"),
+    PIMENTS_JALAPENOS("Piments jalapenos", 1, "sauce"),
+    BOEAUF("Boeuf", 5, "viande"),
+    BACON("Bacon", 3, "viande"),
+    POULET("Poulet", 4, "viande"),
+    OIGNONS("Oignons", 3, "legume"),
+    BASILIC("Basilic",1,"plant"),
+    SAUCE_SECRETE("Sauce secrete",10,"sauce");
     
     private String name;
     private int price;
