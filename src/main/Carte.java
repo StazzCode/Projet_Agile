@@ -68,17 +68,17 @@ public class Carte{
             
         }
         System.out.println();
-        System.out.println("\n┌───────────────────────────────────────────────────────────────────────────────────┐");
-            System.out.println("│Spicy Texas : - Boeuf , Chorizo , Mozzarella                         $ score : 300 │");
-            System.out.println("├───────────────────────────────────────────────────────────────────────────────────┤");
-            System.out.println("│Original Bacon : - Bacon , Boeuf , Mozzarella , Oignon               $ score : 400 │");
-            System.out.println("├───────────────────────────────────────────────────────────────────────────────────┤");
-            System.out.println("│Margarita : - Mozzarella , Basilic , Boeuf                           $ score : 200 │");
-            System.out.println("├───────────────────────────────────────────────────────────────────────────────────┤");
-            System.out.println("│Extra Hot : - Piments , Poulet , Oignon , Chorizo                    $ score : 500 │");
-            System.out.println("├───────────────────────────────────────────────────────────────────────────────────┤");
-            System.out.println("│Special Papa : - Poulet , Bacon , Chorizo , Basilic , Sauce Secrete  $ score : 800 │");
-            System.out.println("└───────────────────────────────────────────────────────────────────────────────────┘\n\n");
+        System.out.println("\n┌───────────────────────────────────────────────────────────────────────────────────────┐");
+            System.out.println("│ 0. Spicy Texas : - Boeuf , Chorizo , Mozzarella                         $ score : 300 │");
+            System.out.println("├───────────────────────────────────────────────────────────────────────────────────────┤");
+            System.out.println("│ 1. Original Bacon : - Bacon , Boeuf , Mozzarella , Oignon               $ score : 400 │");
+            System.out.println("├───────────────────────────────────────────────────────────────────────────────────────┤");
+            System.out.println("│ 2. Margarita : - Mozzarella , Basilic , Boeuf                           $ score : 200 │");
+            System.out.println("├───────────────────────────────────────────────────────────────────────────────────────┤");
+            System.out.println("│ 3. Extra Hot : - Piments , Poulet , Oignon , Chorizo                    $ score : 500 │");
+            System.out.println("├───────────────────────────────────────────────────────────────────────────────────────┤");
+            System.out.println("│ 4. Special Papa : - Poulet , Bacon , Chorizo , Basilic , Sauce Secrete  $ score : 800 │");
+            System.out.println("└───────────────────────────────────────────────────────────────────────────────────────┘\n\n");
     }
 
     public ArrayList<Client> getClientsList() {
