@@ -8,7 +8,7 @@
                                                    |_|          
                          ___
                         |  ~~--.    1 ) Jouer une partie !
-                        |%=@%%/     2 ) Meilleurs Joueurs (pour l'instant demo de l'inventaire)
+                        |%=@%%/     2 ) Meilleurs Joueurs 
                         |o%%%/      3 ) Quitter
                      __ |%%o/
                _,--~~ | |(_/ ._
